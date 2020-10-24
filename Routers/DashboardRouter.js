@@ -7,10 +7,10 @@ router.get('/admin',(req,res,next)=>{
 });
 
 router.get('/karjo',(req,res,next)=>{
-    console.log("karjo");
+    return res.render('panels/karjo.ejs')
 });
 
 router.get('/karfarma',(req,res,next)=>{
-    console.log("karfarma");
+    return res.render('panels/karfarma.ejs')
 });
 module.exports = router;
