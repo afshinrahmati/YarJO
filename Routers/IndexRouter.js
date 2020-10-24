@@ -7,6 +7,7 @@ router.get('/',IndexController.Home);
 
 router.use("/User",require('./AuthRouter'));
 
+router.use('/dashboard',require('./DashboardRouter'))
 
 
 module.exports = router;

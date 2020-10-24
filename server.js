@@ -4,7 +4,7 @@ global.Config = require('./Config');
 const session = require("express-session");
 const cookieParser = require('cookie-parser');
 const Mongostore = require('connect-mongo')(session);  
-const flash = require('flash-express');
+const flash = require('req-flash');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const app = express();
@@ -28,8 +28,6 @@ app.use(flash());
 // ******ReadRouter*******
 
 app.use('/', require('./Routers/IndexRouter'));
-
-
 
 mongoose.connect('mongodb://localhost:27017/YaRjoo', { useNewUrlParser: true, useUnifiedTopology: true });
 

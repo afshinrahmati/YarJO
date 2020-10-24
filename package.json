@@ -30,6 +30,7 @@
     "flash-express": "^1.0.4",
     "jalali-moment": "^3.3.8",
     "mongoose": "^5.10.9",
+    "req-flash": "0.0.3",
     "session": "^0.1.0",
     "validator": "^13.1.17"
   }
