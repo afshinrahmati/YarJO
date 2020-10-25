@@ -1,31 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include('../includes/Bootstrab.ejs') -%>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/css/Regester.css">
-    <title>ثبت نام</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/src/css/Regester.css">
+        <title>ثبت نام</title>
 </head>
 <style>
-    .bt1{
-       
-    width: 66%;
-    margin-left: 209px;
-    margin-top: 10px;
-    border: none;
-    height: 34px;
-    border-radius: 25px;
-    color: white;
-    background: blueviolet;
-}
-input.form-control {
-    width: 45%;
-    margin-right: 8cm;
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
+    p.note {
+        font-size: 1rem;
+        color: red;
+    }
+    
+    input,
+    textarea {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 4px;
+        font-family: 'Lato';
+        width: 300px;
+        margin-top: 10px;
+    }
+    
+    label {
+        width: 300px;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    
+    label span {
+        font-size: 1rem;
+    }
+    
+    label.error {
+        color: red;
+        font-size: 1rem;
+        display: block;
+        margin-top: 5px;
+    }
+    
+    input.error,
+    textarea.error {
+        border: 1px dashed red;
+        font-weight: 300;
+        color: red;
+    }
+    
+    [type="submit"],
+    [type="reset"],
+    button,
+    html [type="button"] {
+        margin-left: 0;
+        border-radius: 0;
+        background: black;
+        color: white;
+        border: none;
+        font-weight: 300;
+        padding: 10px 0;
+        line-height: 1;
+    }
+    
+    .bt1 {
+        width: 66%;
+        margin-left: 209px;
+        margin-top: 10px;
+        border: none;
+        height: 34px;
+        border-radius: 25px;
+        color: white;
+        background: blueviolet;
+    }
+    
+    input.form-control {
+        width: 45%;
+        margin-right: 8cm;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
 </style>
+
 <body>
     <header>
         <%- include('../includes/Headers.ejs') -%>
@@ -33,31 +89,33 @@ input.form-control {
 
     <main>
         <div class="container">
-          
+
             <div class="box-chose" style="background-color: #ffff;">
-                <h4 class="h1-samanh"><%= emailvalau  %> </h4>
+                <a class="h1-samanh" href="/user/Regester">
+                    <%= Thereisnoo  %>
+                </a>
                 <div class="row">
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>خوش آمدید</strong> شماره تلفن خود را وارد نمایید.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>خوش آمدید</strong> شماره تلفن خود را وارد نمایید.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                  </div>
-               
-                  <form action="/user/Login1" method="post" class="col-md-12">
-                    <div class="form-group">
-                       
-                        <input type="text" class="form-control"  placeholder="شماره تلفن خود را وارد نماید" name="mobile" required>
-                      <input type="password"  name="paswword" class="form-control" placeholder="پسور خود را وارد نمایید" required>
-                      <button class="bt1">ارسال</button>
-                  </form>
+                    </div>
+
+                    <form id="basic-form" action="/user/Login1" method="post" class="col-md-12">
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" placeholder="شماره تلفن خود را وارد نماید" name="mobile" required>
+                            <input type="password" name="paswword" class="form-control" placeholder="پسور خود را وارد نمایید" required>
+                            <button class="bt1">ارسال</button>
+                    </form>
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
     </main>
-<script>
-    $("#hid").hide()
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="/src/js/regester.js"></script>
 </body>
+
 </html>
-    
