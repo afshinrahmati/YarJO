@@ -69,3 +69,14 @@ a#dropdownMenuLink {
     border: none;
     border-radius: 7px;
 }
+
+[data-toggle="collapse"].collapsed .icon_down_up:before {
+    content: "\f13a";
+    top: 14px;
+    left: 11px;
+}
+[data-toggle="collapse"] .icon_down_up:before {
+    content: "\f139";
+    top: 14px;
+    left: 11px;
+}
