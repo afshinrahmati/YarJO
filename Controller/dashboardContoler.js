@@ -40,7 +40,7 @@ module.exports = new class Dashboard extends Controllr {
         if (!req.session.role.body === 'admin') {
             return res.redirect('/dashboard' + "/" + `${req.session.role.body}`);
         } else {
-            return res.render('panels/karjo.ejs');
+            return res.render('panels/admin/admin.ejs');
         }
 
     }

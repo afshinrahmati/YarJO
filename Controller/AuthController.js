@@ -132,7 +132,7 @@ module.exports = new class AuthRouter extends Controllr {
                 };
 
                 if (Roles.slug == "admin") {
-                    return res.redirect('/dashboard/karjo');
+                    return res.redirect('/dashboard/admin');
                 };
             }
 
