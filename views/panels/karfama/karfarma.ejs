@@ -11,31 +11,86 @@
 </head>
 
 <body>
-   
 
+    <header>
+        <!-- ========= Navbar ======= -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="row col-12">
+                <div class="col-6">
+                    <div class="col-3">
+                        <a class="navbar-brand" href="#">یارجو</a>
+                    </div>
+                    <div class="col-3 mt-2 menu-show">
+                        <i class="fa fa-bars"></i>
+                    </div>
+
+                </div>
+
+                <div class="col-6">
+                    <div class="row col-12">
+                        <div class="col-10">
+                            <i class="fa  fa-envelope mt-2" style="font-size: 20px;"></i>
+                        </div>
+                        <div class="col-2">
+                            <div class="dropdown show">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user"></i>
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-heart-broken"></i></a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i></a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+        </nav>
+
+        <!-- ========== MEnu + Mohtava -->
+        <div class="mainer">
+            <div class="menu">
+                <div class="box activ">
+                    <div class="box1 ">
+                        <i class="fa fa-home sta activ-writer"></i>
+                        <a href="/dashboard/karfarma" class="a-men">میز کار</a>
+                    </div>
+                </div>
+
+                <div class="box ">
+                    <div class="box1">
+                        <i class="fa fa-calculator sta"></i>
+                        <a href="/dashboard/karfarma/BusinessInfo" class="a-men">درباره ما</a>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box1">
+                        <i class="fa fa-users sta"></i>
+                        <a href="#" class="a-men"> تماس با ما</a>
+                    </div>
+                </div>
+         
+
+
+               
+                <div class="box box-open">
+                    <div class="box1 ">
+                        <i class="fa fa-arrow-left sta"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="prouductstes">
+
+            </div>
+        </div>
+    </header>
 </body>
-<script>
-    $("#r2").hide();
-    $("#r1").on("click", function ali() {
-        $(".menu").css("width", "6%");
-        $("#box1").css("width", "83%");
-        $(".a-dash").hide();
-        $("#box1").css("margin-right", "6px");
-        $(".box2").css("margin-right", "9px");
-        $(".box2").css("font-size", "25px");
-        $("#r1").hide();
-        $("#r2").show();
-    });
-    $("#r2").on("click", function() {
-        $(".menu").css("width", "18%");
-        $("#box1").css("width", "100%");
-        $(".a-dash").show();
-        $("#box1").css("margin-right", "0px");
-        $(".box2").css("margin-right", "25px");
-        $(".box2").css("font-size", "17px");
-        $("#r2").hide();
-        $("#r1").show();
-    });
+<script src="/src/js/karfarma.js">
 </script>
 
 </html>

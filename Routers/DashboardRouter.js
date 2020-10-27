@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 //**********Mideleware *******/
-const karjo_midel = require('../middleware/dashboards/karjomidel');
-const karafrain_midel = require('../middleware/dashboards/karfarmamidel');
-const admin_midel = require('../middleware/dashboards/adminmidel');
+const karjomidel = require('../middleware/dashboards/karjomidel');
+const karafrainmidel = require('../middleware/dashboards/karfarmamidel');
+const adminmidel = require('../middleware/dashboards/adminmidel');
 //**********Contoller *******/
 const dashboards_Controller = require('../Controller/dashboardContoler');
 // ***********************************************
@@ -13,15 +13,15 @@ router.get('/', dashboards_Controller.dash);
 
 // =================dashboard/KARJOO================/
 
-router.get('/karjo', karjo_midel, dashboards_Controller.karjoodash);
+router.get('/karjo', karjomidel, dashboards_Controller.karjoodash);
 
 // =================dashboard/KARFARMA================/
 
-router.get('/karfarma', karafrain_midel, dashboards_Controller.Karfarmadash);
+router.use('/karfarma', karafrainmidel, require('../Routers/karfarma.js'));
 
 // =================dashboard/Admin================/
 
-router.get('/admin', admin_midel, dashboards_Controller.admindash);
+router.use('/admin', adminmidel, require('../Routers/AdminRouter'));
 
 
 module.exports = router;

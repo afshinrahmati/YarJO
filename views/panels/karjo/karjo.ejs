@@ -7,160 +7,140 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>خانه</title>
 
-        <link rel="stylesheet" href="/src/css/karjoo.css">
+        <link rel="stylesheet" href="/src/css/karjo.css">
 </head>
 
 <body>
-    <header style="position: relative;">
+
+    <header>
+        <!-- ========= Navbar ======= -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">کارجوی گرامی خوش آمدید</a>
+            <div class="row col-12">
+                <div class="col-6">
+                    <div class="col-3">
+                        <a class="navbar-brand" href="#">یارجو</a>
+                    </div>
+                    <div class="col-3 mt-2 menu-show">
+                        <i class="fa fa-bars"></i>
+                    </div>
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">
-                                <i class="fa fa-heart"></i>
-                            </a>
-                            <a class="dropdown-item" href="/logout"><i class="fa fa-power-off"></i></a>
+                </div>
 
+                <div class="col-6">
+                    <div class="row col-12">
+                        <div class="col-10">
+                            <i class="fa  fa-envelope mt-2" style="font-size: 20px;"></i>
                         </div>
-                    </li>
-                </ul>
+                        <div class="col-2">
+                            <div class="dropdown show">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user"></i>
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-heart-broken"></i></a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i></a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            </div>
+
+
         </nav>
-        <div class="menu">
-            <div class="box1">
-                <div class="box2">
-                    <i class="fa fa-fish" style="color: #ffc107;"></i>
-                    <a href="#" class="a-dash">ماهی</a>
+
+        <!-- ========== MEnu + Mohtava -->
+        <div class="mainer">
+            <div class="menu">
+                <div class="box activ">
+                    <div class="box1 ">
+                        <i class="fa fa-home sta activ-writer"></i>
+                        <a href="#" class="a-men">میز کار</a>
+                    </div>
                 </div>
 
-            </div>
-            <div class="box1">
-                <div class="box2">
-                    <i class="fa fa-fish" style="color: #ffc107;"></i>
-                    <a href="#" class="a-dash">ماهی</a>
+                <div class="box ">
+                    <div class="box1">
+                        <i class="fa fa-book sta"></i>
+                        <a href="#" class="a-men">دسته بندی</a>
+                    </div>
                 </div>
-
-            </div>
-            <div class="box1">
-                <div class="box2">
-                    <i class="fa fa-fish" style="color: #ffc107;"></i>
-                    <a href="#" class="a-dash">ماهی</a>
+                <div class="box">
+                    <div class="box1">
+                        <i class="fa fa-users sta"></i>
+                        <a href="#" class="a-men"> کاربران</a>
+                    </div>
                 </div>
-
-            </div>
-            <div class="box1">
-                <div class="box2">
-                    <i class="fa fa-fish" style="color: #ffc107;"></i>
-                    <a href="#" class="a-dash">ماهی</a>
+                <div class="box">
+                    <div class="box1">
+                        <i class="fa fa-map sta"></i>
+                        <a href="#" class="a-men">نقشه ها</a>
+                    </div>
                 </div>
-
-            </div>
-            <div class="box1">
-                <div class="box2">
-                    <i class="fa fa-fish" style="color: #ffc107;"></i>
-                    <a href="#" class="a-dash">ماهی</a>
-                </div>
-
-            </div>
-            <div class="box1">
-                <div class="box2">
-                    <i class="fa fa-fish" style="color: #ffc107;"></i>
-                    <a href="#" class="a-dash">ماهی</a>
-                </div>
-
-            </div>
-
-            <div class="box3" id="r1">
-                <div class="box4">
-
+                <div class="box">
+                    <div class="box1">
+                        <i class="fa fa-user-shield sta"></i>
+                        <a href="#" class="a-men">مدیران</a>
+                    </div>
 
                 </div>
 
-            </div>
-            <div class="box3" id="r2">
-                <div class="box4">
+
+                <!-- 00000000000000000000000000000000000000000 -->
+                <div class="box">
+
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <div class="btn btn-link colpases box1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <i class="fa fa-user-shield sta"></i>
+                                        <p class="a-men a-cople">مدیران</p>
+                                        <div id="collapseOne" class="collapse hid" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <i class="fas fa-angle-left sta cople_slide"></i>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <i class="fas fa-angle-up sta cople_slide"></i>
+                                        </div>
+                                    </div>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="box1">
+                                        <i class="fa fa-map sta"></i>
+                                        <a href="#" class="a-men">نقشه ها</a>
+                                    </div>
+
+                                    <div class="box1">
+                                        <i class="fa fa-map sta"></i>
+                                        <a href="#" class="a-men">نقشه ها</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
 
 
                 </div>
-
+                <!-- 00000000000000000000000000000000000000 -->
+                <div class="box box-open">
+                    <div class="box1 ">
+                        <i class="fa fa-arrow-left sta"></i>
+                    </div>
+                </div>
             </div>
+            <div class="prouductstes" >
+    
         </div>
     </header>
-    <main>
-        <div class="all">
-            <div class="row allest">
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-
-    <footer>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light n">
-            <p>تنظیم شده توسط شرکت یارگان</p>
-        </nav>
-
-    </footer>
-
 </body>
-<script>
-    $("#r2").hide();
-    $("#r1").on("click", function ali() {
-        $(".menu").css("width", "6%");
-        $("#box1").css("width", "83%");
-        $(".a-dash").hide();
-        $("#box1").css("margin-right", "6px");
-        $(".box2").css("margin-right", "9px");
-        $(".box2").css("font-size", "25px");
-        $("#r1").hide();
-        $("#r2").show();
-    });
-    $("#r2").on("click", function() {
-        $(".menu").css("width", "18%");
-        $("#box1").css("width", "100%");
-        $(".a-dash").show();
-        $("#box1").css("margin-right", "0px");
-        $(".box2").css("margin-right", "25px");
-        $(".box2").css("font-size", "17px");
-        $("#r2").hide();
-        $("#r1").show();
-    });
+<script src="/src/js/karjo.js">
 </script>
 
 </html>

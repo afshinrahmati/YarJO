@@ -1,0 +1,30 @@
+<%- include("./karfarma.ejs")  -%> 
+<link rel="stylesheet" href="/src/css/karfamapanel/Business.css">
+
+<main>
+  <div class="container form">
+    <input id="sortpicture" type="file" name="sortpic" />
+    <button id="upload">Upload</button>
+  </div>
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $('#upload').on('click', function() {
+    var file_data = $('#sortpicture').prop('files')[0];   
+    var form_data = new FormData();                  
+    form_data.append('file', file_data);
+                           
+    $.ajax({
+        url: '/dashboard/karfarma/BusinessInfopost', 
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,                         
+        type: 'post',
+        success: function(php_script_response){
+            alert(php_script_response); 
+        }
+     });
+});
+</script>
