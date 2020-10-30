@@ -1,13 +1,13 @@
-<%- include('./admin.ejs') -%> 
-<link rel="stylesheet" href="/src/css/Admin/Categori.css">
-<div class="catagoryform">
-    <form action="/dashboard/admin/Categorypost" method="POST">
-      <input class="form-control" type="text" name="name" placeholder="نام" >
-        <div class="form-group">
-         
-          <br>
-          <label for="parentID">آیدی پرنت خود را انتخاب کنید</label>
-          <select class="form-control" id="select1" name="parentID">
+<%- include('./admin.ejs') -%>
+    <link rel="stylesheet" href="/src/css/Admin/Categori.css">
+    <div class="catagoryform">
+        <form action="/dashboard/admin/Categorypost" method="POST">
+            <input class="form-control" type="text" name="name" placeholder="نام">
+            <div class="form-group">
+
+                <br>
+                <label for="parentID">آیدی پرنت خود را انتخاب کنید</label>
+                <select class="form-control" id="select1" name="parentID">
             <option value="0">پدر ندارد</option>
             <% for(let i=0;i<categories.length;i++){ %>
               <% if(categories[i].parentId == 0){ %>  
@@ -15,78 +15,89 @@
             <% } %> 
             <% } %> 
           </select>
-          <br>
-          <select class="form-control" id="select2" name="parentIDD">
+                <br>
+                <select class="form-control" id="select2" name="parentIDD">
             <option value="0">پدر ندارد</option>
           </select>
-          
-       
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <br>
 
-<script>
-  $('#select2').hide();
-$('#select1').on('change', function () {
-    
-    
-    let code = $('#select1 option:selected').val();
-    
-    if (code >0 ) {
-      console.log(code);
-        $.ajax({
-            url: '/dashboard/admin/CategoryID/' + code,
-            type: "GET",
-            dataType: "json",
-            success: function (data) {
-                $("#select2").empty();
-                // $("#select2").append('<option> انتخاب کنید</option>');
+                <select class="form-control" id="select3" name="parentIDDD">
+           
+          </select>
 
-                $.each(data, function (key, value) {
-                    //key :value ==>City = tehran
-                   console.log(value);
-                   $('#select2').show();
-                  for(let i = 0;i<value.length;i++){
-                    $('#select2').append('<option value="' + value[i].id + '">' + value[i].name + '</option>')
-                  }
-                });
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $('#select2').hide();
+        $('#select3').hide();
+        $('#select1').on('change', function() {
+
+
+            let code = $('#select1 option:selected').val();
+
+            if (code > 0) {
+                console.log(code);
+                $.ajax({
+                    url: '/dashboard/admin/CategoryID/' + code,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $("#select2").empty();
+                        // $("#select2").append('<option> انتخاب کنید</option>');
+
+                        $.each(data, function(key, value) {
+                            //key :value ==>City = tehran
+                            console.log(value);
+                            $('#select2').show();
+                            $('#select2').append('<option value="' + 0 + '">' + "پدر ندارد" + '</option>')
+                            for (let i = 0; i < value.length; i++) {
+                                $('#select2').append('<option value="' + value[i].id + '">' + value[i].name + '</option>');
+
+                            }
+                        });
+                    }
+                })
+            } else {
+                $("#select2").hide();
+                $("#select3").hide();
             }
-        })
-    } else {
-        $("#select2").empty();
-    }
 
-});
-$('#select2').on('change', function () {
-    
-    
-    let code = $('#select2 option:selected').val();
-    console.log(1);
-    if (code<55  ) {
-      console.log(code);
-        $.ajax({
-            url: '/dashboard/admin/CategoryID/' + code,
-            type: "GET",
-            dataType: "json",
-            success: function (data) {
-                $("#select2").empty();
-                // $("#select2").append('<option> انتخاب کنید</option>');
+        });
+        $('#select2').on('change', function() {
 
-                $.each(data, function (key, value) {
-                    //key :value ==>City = tehran
-                   console.log(value);
-                   $('#select2').show();
-                  for(let i = 0;i<value.length;i++){
-                    $('#select2').append('<option value="' +  value[i].id+ '">' + value[i].name + '</option><option value="' +  2+ '">' + "w" + '</option>')
-                  }
-                });
+
+            let code = $('#select2 option:selected').val();
+            console.log(code)
+            if (code > 0) {
+
+                $.ajax({
+                    url: '/dashboard/admin/CategoryIDD/' + code,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+
+                        // $("#select2").append('<option> انتخاب کنید</option>');
+
+                        $.each(data, function(key, value) {
+
+
+
+                            $('#select3').show();
+
+                            for (let i = 0; i < value.length; i++) {
+                                $('#select3').append('<option value="' + value[i].id + '">' + value[i].name + '</option>');
+
+                            }
+                        });
+                    }
+                })
+            } else {
+                $("#select3").hide();
             }
-        })
-    } else {
-        $("#select2").empty();
-    }
 
-});
-</script>
+        });
+    </script>
