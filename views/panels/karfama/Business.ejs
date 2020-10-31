@@ -1,27 +1,54 @@
-<%- include("./karfarma.ejs")  -%> 
-<link rel="stylesheet" href="/src/css/karfamapanel/Business.css">
+<%- include("./karfarma.ejs")  -%>
+    <link rel="stylesheet" href="/src/css/karfamapanel/Business.css">
 
-</style>
-<main>
-  
-  <div class="container form">
-      
-         <form action="/dashboard/karfarma/BusinessInfopost" method="post">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputEmail4">Email</label>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4">Password</label>
-                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                </div>
-              </div>
+    <style>
+        .form-group {
+            text-align: justify;
+            font-size: 12px;
+            margin-top: 12px;
+            color: hsl(300deg 8% 49%);
+        }
+        
+        .menu {
+            background-color: hsl(202deg 19% 28%);
+            width: 17%;
+            height: 67rem;
+            position: absolute;
+            box-shadow: 2px 2px 10px #9e4141;
+        }
+        
+        button.btn.btn-primary {
+            width: 100%;
+        }
+        
+        .image-dropping,
+        .image-upload-wrap:hover {
+            background-color: hsl(158deg 100% 50%);
+            border: 1px solid;
+        }
+    </style>
+    <main>
 
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label for="inputEmail4">Email</label>
-                  <select class="form-control" id="select1" name="parentID">
+        <div class="container form">
+
+            <form action="/dashboard/karfarma/BusinessInfopost" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">عنوان کسب و کار</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:بسته بندی مزمز">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">انتخاب دامنه در سایت یارجو</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="مثال:Yargan(متن انگلیسی)" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57)"
+                        />
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4">لطفا دسته بندی شغل خود را انتخاب نمیاد</label>
+                        <select class="form-control" id="select1" name="parentID">
                     <option value="0">انتخاب کنید</option>
                     <% for(let i=0;i<categories.length;i++){ %>
                     <% if(categories[i].parentId == 0){ %>  
@@ -29,168 +56,276 @@
                     <% } %> 
                     <% } %> 
                                     </select>
-                </div>
-                <div class="form-group col-md-4">
-                  
-                  <div  id="CategouryFind">      
-                </div>
-                </div>
-                <div class="form-group col-md-4">
-                    
-                    <div  id="CategouryFindd">
                     </div>
-                  </div>
-            </div>
-             
-         
-              <button type="submit" class="btn btn-primary">Sign in</button>
-    
-        
-           
-           
+                    <div class="form-group col-md-4">
+
+                        <div id="CategouryFind">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+
+                        <div id="CategouryFindd">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">نام برند</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:مزمز">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">زمینه فعالیت</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="مثال:شرکت بسته بندی چی توز" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57)"
+                        />
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4">شماره ثبت</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:20178">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4">شماره ملی</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:32156">
+
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4">نوع کسب و کار</label>
+                        <select class="form-control">
+                            <option value="0">انتخاب کنید</option>
+                            <option value="1"> کسب و کار خدماتی</option>
+                            <option value="2">کسب و کار بازرگانی</option>
+                            <option value="3">کسب و کار تولیدی</option>
+                            <option value="4">کسب و کار مختلط</option>
+                            <option value="5">کسب و کار اینترنتی</option>
+                            <option value="6">کسب و کار خانگی</option>
+                            <option value="7">کسب و کار تک مالکیتی</option>
+                            <option value="8">شراکت</option>
+                            <option value="9">شرکت سهامی</option>
+                            <option value="10">شرکت تعاونی</option>
+                            <option value="11">سایر</option>
+
+                          </select>
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4">نام مدیر عامل</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:افشین رحمتی">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4">تاریخ</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:32156">
+
+                    </div>
 
 
-           
-    </div>
-<!-- <div class="col-12">
-  <div class="file-upload  ">
-    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">آپلود عکس پروفایل</button>
-    <div class="image-upload-wrap">
+                </div>
 
-        <input class="file-upload-input" class="form-control mb-4" name="img" type='file' onchange="readURL(this);" />
-        <div class="drag-text">
-            <h3>آپلود عکس</h3>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="inputEmail4">نام مدیر عامل</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:افشین رحمتی">
+                    </div>
+
+
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="file-upload  ">
+                            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">آپلود لوگو </button>
+                            <div class="image-upload-wrap">
+
+                                <input class="file-upload-input" class="form-control mb-4" name="img" type='file' onchange="readURL(this);" />
+                                <div class="drag-text">
+                                    <h3>آپلود لوگوی کسب و کار</h3>
+                                </div>
+                            </div>
+                            <div class="file-upload-content">
+                                <img class="file-upload-image" src="#" alt="your image" />
+                                <div class="image-title-wrap">
+                                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-primary">ارسال</button>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
         </div>
-    </div>
-    <div class="file-upload-content">
-        <img class="file-upload-image" src="#" alt="your image" />
-        <div class="image-title-wrap">
-            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-        </div>
-    </div>
-</div>
-
+        <!-- <div class="col-12">
+  
 </div> -->
 
-            </form>
-  
-</div>
-</main>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    // ********SELECT1*********
-$('#select1').on('change', function() {
-   
-let code = $('#select1 option:selected').val();
-if (code > 0) {
-    $.ajax({
-        url: '/dashboard/karfarma/Category/' + code,
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
-          $("#Select2").remove();
-          $("#Select3").remove();
-            $.each(data, function(key, value) {
-                let parennts = document.getElementById("CategouryFind");
-                let sel = document.createElement("select");
-               
-                sel.setAttribute("id", "Select2");
-                sel.setAttribute("class", "form-control");
-                sel.setAttribute("name", "parentID");
-                parennts.appendChild(sel);
-                let opt1 = document.createElement("option");
-                    opt1.value = "0" ;
-                    opt1.text = "انتخاب کنید" ;
-                    sel.add(opt1, null);
-                for (let i = 0; i < value.length; i++) {
-                    let opt2 = document.createElement("option");
-                    opt2.value = value[i].id;
-                    opt2.text = value[i].name;
-                    sel.add(opt2, null);
-                };
-            });
-        }
-    })
-} else {
-    $("#Select2").remove();
-    $("#Select3").remove();
-};
-});
+        </form>
 
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // ********SELECT1*********
+        $('#select1').on('change', function() {
 
-$(document).on('change','#Select2', function() {
-   
-    let code = $('#Select2 option:selected').val();
-    console.log(code);
-if (code > 0) {
-    $.ajax({
-        url: '/dashboard/karfarma/Category/' + code,
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
-          
-          $("#Select3").remove();
-            $.each(data, function(key, value) {
-                let parennts = document.getElementById("CategouryFindd");
-                let sel = document.createElement("select");
-                sel.setAttribute("id", "Select3");
-                sel.setAttribute("class", "form-control");
-                sel.setAttribute("name", "parentIDD");
-                parennts.appendChild(sel);
-                let opt1 = document.createElement("option");
-                    opt1.value = "0" ;
-                    opt1.text = "انتخاب کنید" ;
-                    sel.add(opt1, null);
-                for (let i = 0; i < value.length; i++) {
-                    let opt2 = document.createElement("option");
-                    opt2.value = value[i].id;
-                    opt2.text = value[i].name;
-                    sel.add(opt2, null);
-                };
-            });
-        }
-    })
-} else {
-    
-    $("#Select3").remove();
-};
-});
-  
+            let code = $('#select1 option:selected').val();
+            if (code > 0) {
+                $.ajax({
+                    url: '/dashboard/karfarma/Category/' + code,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $("#Select2").remove();
+                        $("#lable2").remove();
+                        $("#Select3").remove();
+                        $("#lable3").remove();
 
+                        $.each(data, function(key, value) {
+                            let parennts = document.getElementById("CategouryFind");
+                            let lable = document.createElement("LABEL");
+                            lable.setAttribute("id", "lable2");
+                            let t = document.createTextNode("لطفا انتخاب نماید");
+                            lable.appendChild(t);
+                            parennts.appendChild(lable);
 
+                            let sel2 = document.createElement("select");
 
-// ********IMG**********
-function readURL(input) {
-        if (input.files && input.files[0]) {
-
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-
-                $('.image-upload-wrap').hide();
-
-                $('.file-upload-image').attr('src', e.target.result);
-                $('.file-upload-content').show();
-
-                $('.image-title').html(input.files[0].name);
+                            sel2.setAttribute("id", "Select2");
+                            sel2.setAttribute("class", "form-control");
+                            sel2.setAttribute("name", "parentID");
+                            parennts.appendChild(sel2);
+                            let opt1 = document.createElement("option");
+                            opt1.value = "0";
+                            opt1.text = "انتخاب کنید";
+                            sel2.add(opt1, null);
+                            for (let i = 0; i < value.length; i++) {
+                                let opt2 = document.createElement("option");
+                                opt2.value = value[i].id;
+                                opt2.text = value[i].name;
+                                sel2.add(opt2, null);
+                            };
+                        });
+                    }
+                })
+            } else {
+                $("#Select2").remove();
+                $("#lable2").remove();
+                $("#lable3").remove();
+                $("#Select3").remove();
             };
+        });
 
-            reader.readAsDataURL(input.files[0]);
 
-        } else {
-            removeUpload();
+        $(document).on('change', '#Select2', function() {
+
+            let code = $('#Select2 option:selected').val();
+            console.log(code);
+            if (code > 0) {
+                $.ajax({
+                    url: '/dashboard/karfarma/Category/' + code,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+
+                        $("#Select3").remove();
+                        $.each(data, function(key, value) {
+                            let parennts = document.getElementById("CategouryFindd");
+
+                            let lable = document.createElement("LABEL");
+                            lable.setAttribute("id", "lable3");
+                            let t = document.createTextNode("لطفا انتخاب نماید");
+                            lable.appendChild(t);
+                            parennts.appendChild(lable);
+
+
+
+
+
+
+
+
+
+
+
+
+                            let sel = document.createElement("select");
+                            sel.setAttribute("id", "Select3");
+                            sel.setAttribute("class", "form-control");
+                            sel.setAttribute("name", "parentIDD");
+                            parennts.appendChild(sel);
+                            let opt1 = document.createElement("option");
+                            opt1.value = "0";
+                            opt1.text = "انتخاب کنید";
+                            sel.add(opt1, null);
+                            for (let i = 0; i < value.length; i++) {
+                                let opt2 = document.createElement("option");
+                                opt2.value = value[i].id;
+                                opt2.text = value[i].name;
+                                sel.add(opt2, null);
+                            };
+                        });
+                    }
+                })
+            } else {
+                $("#lable3").remove();
+                $("#Select3").remove();
+            };
+        });
+
+
+
+
+        // ********IMG**********
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+
+                    $('.image-upload-wrap').hide();
+
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+
+                    $('.image-title').html(input.files[0].name);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+            } else {
+                removeUpload();
+            }
         }
-    }
 
-    function removeUpload() {
-        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-        $('.file-upload-content').hide();
-        $('.image-upload-wrap').show();
-    }
-    $('.image-upload-wrap').bind('dragover', function() {
-        $('.image-upload-wrap').addClass('image-dropping');
-    });
-    $('.image-upload-wrap').bind('dragleave', function() {
-        $('.image-upload-wrap').removeClass('image-dropping');
-    });
-</script>
+        function removeUpload() {
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function() {
+            $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function() {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
+    </script>
