@@ -1,8 +1,10 @@
 $(".box-open").hide();
 $(".zir-majmo").hide();
 $(".fa-angle-down").hide();
+
 $(".menu-show").on("click", function ali() {
     $(".a-men").hide();
+    
     $(".menu-show").hide();
     $("#collapseOne").hide();
     $(".x1111").hide();

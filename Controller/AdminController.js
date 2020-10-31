@@ -23,6 +23,7 @@ module.exports = new class Admin extends Controllr {
             let data = {
 
             }
+            
             if (last_element == null) {
                 data.id = 1;
             } else {

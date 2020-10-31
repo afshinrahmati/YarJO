@@ -2,6 +2,8 @@ $(".box-open").hide();
 $(".zir-majmo").hide();
 $(".fa-angle-down").hide();
 $(".menu-show").on("click", function ali() {
+    $(".container.form").css("width","85%");
+    $(".container.form").css("margin-right","11%");
     $(".a-men").hide();
     $(".menu-show").hide();
     $("#collapseOne").hide();
@@ -13,7 +15,8 @@ $(".box-open").on("click", function ali() {
     $(".a-men").show();
     $("#collapseOne").show();
 
-
+    $(".container.form").css("width","75%");
+    $(".container.form").css("margin-right","19%");
     $(".cople_slide").show();
     $(".menu-show").show();
     $(".box-open").hide();

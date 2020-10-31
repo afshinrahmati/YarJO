@@ -11,4 +11,6 @@ router.get('/',dashboardsController.Karfarmadash);
 router.get('/BusinessInfo',miderverKarfarma,karfarmaContoler.BusinessInfoGet);
 router.post('/BusinessInfopost',miderverKarfarma,karfarmaContoler.BusinessInfoPost);
 
+router.get('/Category/:id',miderverKarfarma,karfarmaContoler.CategoryId)
+
 module.exports = router;

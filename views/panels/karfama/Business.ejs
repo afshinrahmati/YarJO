@@ -1,30 +1,196 @@
 <%- include("./karfarma.ejs")  -%> 
 <link rel="stylesheet" href="/src/css/karfamapanel/Business.css">
 
+</style>
 <main>
+  
   <div class="container form">
-    <input id="sortpicture" type="file" name="sortpic" />
-    <button id="upload">Upload</button>
-  </div>
+      
+         <form action="/dashboard/karfarma/BusinessInfopost" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Email</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Password</label>
+                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="inputEmail4">Email</label>
+                  <select class="form-control" id="select1" name="parentID">
+                    <option value="0">انتخاب کنید</option>
+                    <% for(let i=0;i<categories.length;i++){ %>
+                    <% if(categories[i].parentId == 0){ %>  
+                    <option value="<%= categories[i].id %>"><%= categories[i].name %> </option>
+                    <% } %> 
+                    <% } %> 
+                                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                  
+                  <div  id="CategouryFind">      
+                </div>
+                </div>
+                <div class="form-group col-md-4">
+                    
+                    <div  id="CategouryFindd">
+                    </div>
+                  </div>
+            </div>
+             
+         
+              <button type="submit" class="btn btn-primary">Sign in</button>
+    
+        
+           
+           
+
+
+           
+    </div>
+<!-- <div class="col-12">
+  <div class="file-upload  ">
+    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">آپلود عکس پروفایل</button>
+    <div class="image-upload-wrap">
+
+        <input class="file-upload-input" class="form-control mb-4" name="img" type='file' onchange="readURL(this);" />
+        <div class="drag-text">
+            <h3>آپلود عکس</h3>
+        </div>
+    </div>
+    <div class="file-upload-content">
+        <img class="file-upload-image" src="#" alt="your image" />
+        <div class="image-title-wrap">
+            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+        </div>
+    </div>
+</div>
+
+</div> -->
+
+            </form>
+  
+</div>
 </main>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <script>
-    $('#upload').on('click', function() {
-    var file_data = $('#sortpicture').prop('files')[0];   
-    var form_data = new FormData();                  
-    form_data.append('file', file_data);
-                           
+    // ********SELECT1*********
+$('#select1').on('change', function() {
+   
+let code = $('#select1 option:selected').val();
+if (code > 0) {
     $.ajax({
-        url: '/dashboard/karfarma/BusinessInfopost', 
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_data,                         
-        type: 'post',
-        success: function(php_script_response){
-            alert(php_script_response); 
+        url: '/dashboard/karfarma/Category/' + code,
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+          $("#Select2").remove();
+          $("#Select3").remove();
+            $.each(data, function(key, value) {
+                let parennts = document.getElementById("CategouryFind");
+                let sel = document.createElement("select");
+               
+                sel.setAttribute("id", "Select2");
+                sel.setAttribute("class", "form-control");
+                sel.setAttribute("name", "parentID");
+                parennts.appendChild(sel);
+                let opt1 = document.createElement("option");
+                    opt1.value = "0" ;
+                    opt1.text = "انتخاب کنید" ;
+                    sel.add(opt1, null);
+                for (let i = 0; i < value.length; i++) {
+                    let opt2 = document.createElement("option");
+                    opt2.value = value[i].id;
+                    opt2.text = value[i].name;
+                    sel.add(opt2, null);
+                };
+            });
         }
-     });
+    })
+} else {
+    $("#Select2").remove();
+    $("#Select3").remove();
+};
 });
+
+
+$(document).on('change','#Select2', function() {
+   
+    let code = $('#Select2 option:selected').val();
+    console.log(code);
+if (code > 0) {
+    $.ajax({
+        url: '/dashboard/karfarma/Category/' + code,
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+          
+          $("#Select3").remove();
+            $.each(data, function(key, value) {
+                let parennts = document.getElementById("CategouryFindd");
+                let sel = document.createElement("select");
+                sel.setAttribute("id", "Select3");
+                sel.setAttribute("class", "form-control");
+                sel.setAttribute("name", "parentIDD");
+                parennts.appendChild(sel);
+                let opt1 = document.createElement("option");
+                    opt1.value = "0" ;
+                    opt1.text = "انتخاب کنید" ;
+                    sel.add(opt1, null);
+                for (let i = 0; i < value.length; i++) {
+                    let opt2 = document.createElement("option");
+                    opt2.value = value[i].id;
+                    opt2.text = value[i].name;
+                    sel.add(opt2, null);
+                };
+            });
+        }
+    })
+} else {
+    
+    $("#Select3").remove();
+};
+});
+  
+
+
+
+// ********IMG**********
+function readURL(input) {
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+
+                $('.image-upload-wrap').hide();
+
+                $('.file-upload-image').attr('src', e.target.result);
+                $('.file-upload-content').show();
+
+                $('.image-title').html(input.files[0].name);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        } else {
+            removeUpload();
+        }
+    }
+
+    function removeUpload() {
+        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+        $('.file-upload-content').hide();
+        $('.image-upload-wrap').show();
+    }
+    $('.image-upload-wrap').bind('dragover', function() {
+        $('.image-upload-wrap').addClass('image-dropping');
+    });
+    $('.image-upload-wrap').bind('dragleave', function() {
+        $('.image-upload-wrap').removeClass('image-dropping');
+    });
 </script>
