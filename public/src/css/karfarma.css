@@ -63,10 +63,11 @@ i.fa.fa-envelope.mt-2 {
     text-align: end;
     background: no-repeat;
     border: none;
-    margin-left: -92px;
+    margin-left: -14px;
+    padding: 0px 53px;
 }
-
-a.dropdown-item {
+a.nave-header-drop {
+    display: block;
     background: #9e4141;
     width: 38px;
     border-radius: 73px;

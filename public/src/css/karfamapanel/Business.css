@@ -13,11 +13,56 @@ h5.chooseFind {
   margin-top: 6px;
 }  
 
+.form-group {
+  text-align: justify;
+  font-size: 12px;
+  margin-top: 12px;
+  color: hsl(300deg 8% 49%);
+}
 
+.menu {
+  background-color: hsl(202deg 19% 28%);
+  width: 17%;
+  height: 75rem;
+  position: absolute;
+  box-shadow: 2px 2px 10px #9e4141;
+}
+span.input-group-text.cursor-pointer.birthDate-text-label {
+margin-left: -32px;
+margin-top: -6px;
+border: navajowhite;
+border-radius: 2px;
+  }
+input#birthDate-text {
+margin-left: 7px;
+margin-top: -6px;
+}
+button.btn.btn-primary {
+  width: 100%;
+}
 
+.image-dropping,
+.image-upload-wrap:hover {
+  background-color: hsl(158deg 100% 50%);
+  border: 1px solid;
+}
 
-
-
+.popover-body.p-0 {
+  font-family: 'IRANSans';
+  background: #00f3b0;
+}
+span.color-required {
+  color: red;
+  font-size: 12px;
+}
+h3.popover-header.text-center {
+  font-family: 'IRANSans';
+}
+.dropdown-menu.show {
+  background: antiquewhite;
+  padding: 4px;
+  box-shadow: 2px 2px 10px #07a3ff;
+}
 
   .file-upload {
     background-color: #ffffff;

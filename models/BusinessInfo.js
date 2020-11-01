@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const BusinessInfo = new Schema({
+const BusinessInfos = new Schema({
     UserId: 
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -15,9 +15,9 @@ const BusinessInfo = new Schema({
         },
 
     Category:{
-      type:String,
-      required:true
-          },  
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category"
+    },  
     Title:{
         type:String,
         required:true
@@ -28,7 +28,7 @@ const BusinessInfo = new Schema({
     },
     Brand:{
         type:String,
-        required:true
+       
     }
     ,
     Brand:{
@@ -39,10 +39,34 @@ const BusinessInfo = new Schema({
         type:String,
         required:true
     }
-
+    ,
+    SabtNo:{
+        type:String,
+        required:true
+    }
+    ,
+    MelliNo:{
+        type:String,
+        required:true
+    }
+    ,
+    CEO:{
+        type:String,
+        required:true
+    }
+    ,
+    StartDate:{
+        type:String,
+        required:true
+    }
+    ,
+    Description:{
+        type:String,
+        required:true
+    }
           
 
 });
 
+module.exports =  mongoose.model('BusinessInfo', BusinessInfos);
 
-module.exports = mongoose.model('BusinessInfo', BusinessInfo);

@@ -1,53 +1,34 @@
 <%- include("./karfarma.ejs")  -%>
+    <link rel="stylesheet" href="/config/jquery.md.bootstrap.datetimepicker.style.css">
     <link rel="stylesheet" href="/src/css/karfamapanel/Business.css">
 
-    <style>
-        .form-group {
-            text-align: justify;
-            font-size: 12px;
-            margin-top: 12px;
-            color: hsl(300deg 8% 49%);
-        }
-        
-        .menu {
-            background-color: hsl(202deg 19% 28%);
-            width: 17%;
-            height: 67rem;
-            position: absolute;
-            box-shadow: 2px 2px 10px #9e4141;
-        }
-        
-        button.btn.btn-primary {
-            width: 100%;
-        }
-        
-        .image-dropping,
-        .image-upload-wrap:hover {
-            background-color: hsl(158deg 100% 50%);
-            border: 1px solid;
-        }
-    </style>
-    <main>
 
+ 
+    <main>
+<h1><%=BusinesInfo  %> </h1>
         <div class="container form">
 
-            <form action="/dashboard/karfarma/BusinessInfopost" method="post">
+            <form action="/dashboard/karfarma/BusinessInfopost" method="post" enctype="multipart/form-data">
+<!--Title+Dmain  -->
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">عنوان کسب و کار</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:بسته بندی مزمز">
+                        <span class="color-required">*</span>
+                        <input type="text" value="<%=BusinesInfo[0].Title  %>" name="Title" class="form-control" id="inputEmail4" placeholder="مثال:بسته بندی مزمز" required>
                     </div>
+<!-- Domain -->
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">انتخاب دامنه در سایت یارجو</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="مثال:Yargan(متن انگلیسی)" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57)"
-                        />
+                        <span class="color-required">*</span>
+                        <input type="text" value="<%=BusinesInfo[0].Domain  %>" class="form-control" id="Domain" placeholder="مثال:Yargan(متن انگلیسی)" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57)" name="Domain" required/>
 
                     </div>
                 </div>
-
+<!-- ChosseCategory -->
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="inputEmail4">لطفا دسته بندی شغل خود را انتخاب نمیاد</label>
+                        <span class="color-required">*</span>
                         <select class="form-control" id="select1" name="parentID">
                     <option value="0">انتخاب کنید</option>
                     <% for(let i=0;i<categories.length;i++){ %>
@@ -68,33 +49,41 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="form-row">
+<!--Brand+Active  -->
+                <div class="form-row"> 
+                    <!-- Brand -->
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">نام برند</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:مزمز">
+                        <input type="text" value="<%=BusinesInfo[0].Brand  %>" name="Brand" class="form-control" id="inputEmail4" placeholder="مثال:مزمز">
                     </div>
+                    <!-- Active -->
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">زمینه فعالیت</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="مثال:شرکت بسته بندی چی توز" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57)"
-                        />
+                        <span class="color-required">*</span>
+                        <input value="<%=BusinesInfo[0].Activity  %>" type="text" class="form-control" id="firstName" placeholder="مثال:شرکت بسته بندی چی توز" name="Activity" required/>
 
                     </div>
                 </div>
-
+<!-- Mellino+Mellino+ TypeWork-->
                 <div class="form-row">
+                    <!-- Mellino -->
                     <div class="form-group col-md-4">
                         <label for="inputEmail4">شماره ثبت</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:20178">
+                        <span class="color-required">*</span>
+                        <input  type="number" value="<%=BusinesInfo[0].SabtNo  %>" name="SabtNo"  class="form-control" id="inputEmail4" placeholder="مثال:20178" required>
                     </div>
+                    <!-- Mellino -->
                     <div class="form-group col-md-4">
                         <label for="inputPassword4">شماره ملی</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:32156">
+                        <span class="color-required">*</span>
+                        <input type="number" value="<%=BusinesInfo[0].MelliNo  %>" name="MelliNo" class="form-control" id="inputEmail4" placeholder="مثال:32156" required>
 
                     </div>
+                    <!-- TypeWork -->
                     <div class="form-group col-md-4">
                         <label for="inputEmail4">نوع کسب و کار</label>
-                        <select class="form-control">
+                        <span class="color-required">*</span>
+                        <select class="form-control" >
                             <option value="0">انتخاب کنید</option>
                             <option value="1"> کسب و کار خدماتی</option>
                             <option value="2">کسب و کار بازرگانی</option>
@@ -107,48 +96,74 @@
                             <option value="9">شرکت سهامی</option>
                             <option value="10">شرکت تعاونی</option>
                             <option value="11">سایر</option>
-
                           </select>
-
                     </div>
                 </div>
-
+<!-- namemanger + DAta  -->
                 <div class="form-row">
+                    <!-- namemanager -->
                     <div class="form-group col-md-4">
                         <label for="inputEmail4">نام مدیر عامل</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:افشین رحمتی">
+                        <span class="color-required">*</span>
+                        <input value="<%=BusinesInfo[0].CEO  %>" type="text" name="CEO" class="form-control" id="inputEmail4" placeholder="مثال:افشین رحمتی" required>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputPassword4">تاریخ</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:32156">
+                    <!-- DAte -->
+                    <div class="form-group col-md-8 ">
+                      
 
+                        <div class="col-12 col-sm-6 col-lg-4 item">
+                            <div class="input-group ">
+                                <label for="inputEmail4" > سال تاسیس</label>
+                                <span class="color-required">*</span>
+                                <label for="birthDate-text-label"
+                                       class="col-12 control-label text-right">
+                                </label>
+                                <div class="input-group-prepend">
+                                    <input type="text" id="birthDate-text" class="form-control birthDate-text-label "
+                                    placeholder="مثال :1379/05/16"
+                                    value="">
+                                    <span class="input-group-text cursor-pointer birthDate-text-label">
+                                 انتخاب تاریخ
+                                    </span>
+                                </div>
+                              
+                                <input type="hidden" id="birthDate-date"
+                                       class="form-control "
+                                       placeholder=""
+                                       name="StartDate" aria-label="birthDate-date"
+                                       value=""
+                                       aria-describedby="birthDate-date">
+                            </div>
+                        </div>            
                     </div>
-
-
                 </div>
-
+<!--    about work -->
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="inputEmail4">نام مدیر عامل</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="مثال:افشین رحمتی">
+                        <label for="inputEmail4">توضیحات راجبع کسب و کار خود</label>
+                        <span class="color-required">*</span>
+                        <textarea class="form-control" name='description' id="exampleFormControlTextarea1" rows="5" placeholder="توضیحات راجبع کسب و کار خود" required></textarea>
                     </div>
 
 
 
                 </div>
+<!-- Logo -->
                 <div class="form-row">
+                   
                     <div class="form-group col-md-12">
                         <div class="file-upload  ">
                             <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">آپلود لوگو </button>
                             <div class="image-upload-wrap">
 
-                                <input class="file-upload-input" class="form-control mb-4" name="img" type='file' onchange="readURL(this);" />
+                                <input class="file-upload-input" class="form-control mb-4" name="img" type='file' onchange="readURL(this);" required />
                                 <div class="drag-text">
                                     <h3>آپلود لوگوی کسب و کار</h3>
+                                    
                                 </div>
                             </div>
                             <div class="file-upload-content">
-                                <img class="file-upload-image" src="#" alt="your image" />
+                                <img class="file-upload-image" src="<%=BusinesInfo[0].Logo  %> " alt="your image" />
                                 <div class="image-title-wrap">
                                     <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
                                 </div>
@@ -157,6 +172,7 @@
 
                     </div>
                 </div>
+<!-- Send -->
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <button type="submit" class="btn btn-primary">ارسال</button>
@@ -165,167 +181,19 @@
 
 
                 </div>
-
-
-
-
-
-
-
-
         </div>
-        <!-- <div class="col-12">
-  
-</div> -->
-
         </form>
 
         </div>
     </main>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        // ********SELECT1*********
-        $('#select1').on('change', function() {
-
-            let code = $('#select1 option:selected').val();
-            if (code > 0) {
-                $.ajax({
-                    url: '/dashboard/karfarma/Category/' + code,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-                        $("#Select2").remove();
-                        $("#lable2").remove();
-                        $("#Select3").remove();
-                        $("#lable3").remove();
-
-                        $.each(data, function(key, value) {
-                            let parennts = document.getElementById("CategouryFind");
-                            let lable = document.createElement("LABEL");
-                            lable.setAttribute("id", "lable2");
-                            let t = document.createTextNode("لطفا انتخاب نماید");
-                            lable.appendChild(t);
-                            parennts.appendChild(lable);
-
-                            let sel2 = document.createElement("select");
-
-                            sel2.setAttribute("id", "Select2");
-                            sel2.setAttribute("class", "form-control");
-                            sel2.setAttribute("name", "parentID");
-                            parennts.appendChild(sel2);
-                            let opt1 = document.createElement("option");
-                            opt1.value = "0";
-                            opt1.text = "انتخاب کنید";
-                            sel2.add(opt1, null);
-                            for (let i = 0; i < value.length; i++) {
-                                let opt2 = document.createElement("option");
-                                opt2.value = value[i].id;
-                                opt2.text = value[i].name;
-                                sel2.add(opt2, null);
-                            };
-                        });
-                    }
-                })
-            } else {
-                $("#Select2").remove();
-                $("#lable2").remove();
-                $("#lable3").remove();
-                $("#Select3").remove();
-            };
-        });
+    
+ <script src="/config/jquery.min.js"></script>
+ <!-- for DAta{ -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+    <script src="/config/jquery.md.bootstrap.datetimepicker.js"></script>
+<!-- } -->
 
 
-        $(document).on('change', '#Select2', function() {
-
-            let code = $('#Select2 option:selected').val();
-            console.log(code);
-            if (code > 0) {
-                $.ajax({
-                    url: '/dashboard/karfarma/Category/' + code,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-
-                        $("#Select3").remove();
-                        $.each(data, function(key, value) {
-                            let parennts = document.getElementById("CategouryFindd");
-
-                            let lable = document.createElement("LABEL");
-                            lable.setAttribute("id", "lable3");
-                            let t = document.createTextNode("لطفا انتخاب نماید");
-                            lable.appendChild(t);
-                            parennts.appendChild(lable);
-
-
-
-
-
-
-
-
-
-
-
-
-                            let sel = document.createElement("select");
-                            sel.setAttribute("id", "Select3");
-                            sel.setAttribute("class", "form-control");
-                            sel.setAttribute("name", "parentIDD");
-                            parennts.appendChild(sel);
-                            let opt1 = document.createElement("option");
-                            opt1.value = "0";
-                            opt1.text = "انتخاب کنید";
-                            sel.add(opt1, null);
-                            for (let i = 0; i < value.length; i++) {
-                                let opt2 = document.createElement("option");
-                                opt2.value = value[i].id;
-                                opt2.text = value[i].name;
-                                sel.add(opt2, null);
-                            };
-                        });
-                    }
-                })
-            } else {
-                $("#lable3").remove();
-                $("#Select3").remove();
-            };
-        });
-
-
-
-
-        // ********IMG**********
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-
-                    $('.image-upload-wrap').hide();
-
-                    $('.file-upload-image').attr('src', e.target.result);
-                    $('.file-upload-content').show();
-
-                    $('.image-title').html(input.files[0].name);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-
-            } else {
-                removeUpload();
-            }
-        }
-
-        function removeUpload() {
-            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-            $('.file-upload-content').hide();
-            $('.image-upload-wrap').show();
-        }
-        $('.image-upload-wrap').bind('dragover', function() {
-            $('.image-upload-wrap').addClass('image-dropping');
-        });
-        $('.image-upload-wrap').bind('dragleave', function() {
-            $('.image-upload-wrap').removeClass('image-dropping');
-        });
-    </script>
+<script src="/src/js/Karfarma/BusinessInfo.js"></script>   
