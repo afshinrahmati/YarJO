@@ -5,22 +5,22 @@
 
  
     <main>
-<h1><%=BusinesInfo  %> </h1>
+
         <div class="container form">
 
-            <form action="/dashboard/karfarma/BusinessInfopost" method="post" enctype="multipart/form-data">
+            <form action="" id="formId" method="post" enctype="multipart/form-data">
 <!--Title+Dmain  -->
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">عنوان کسب و کار</label>
                         <span class="color-required">*</span>
-                        <input type="text" value="<%=BusinesInfo[0].Title  %>" name="Title" class="form-control" id="inputEmail4" placeholder="مثال:بسته بندی مزمز" required>
+                        <input type="text"  name="Title" class="form-control" id="inputEmail4" placeholder="مثال:بسته بندی مزمز" >
                     </div>
 <!-- Domain -->
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">انتخاب دامنه در سایت یارجو</label>
                         <span class="color-required">*</span>
-                        <input type="text" value="<%=BusinesInfo[0].Domain  %>" class="form-control" id="Domain" placeholder="مثال:Yargan(متن انگلیسی)" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57)" name="Domain" required/>
+                        <input type="text"  class="form-control" id="Domain" placeholder="مثال:Yargan(متن انگلیسی)" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57)" name="Domain" />
 
                     </div>
                 </div>
@@ -54,13 +54,13 @@
                     <!-- Brand -->
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">نام برند</label>
-                        <input type="text" value="<%=BusinesInfo[0].Brand  %>" name="Brand" class="form-control" id="inputEmail4" placeholder="مثال:مزمز">
+                        <input type="text"  name="Brand" class="form-control" id="Brand" placeholder="مثال:مزمز">
                     </div>
                     <!-- Active -->
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">زمینه فعالیت</label>
                         <span class="color-required">*</span>
-                        <input value="<%=BusinesInfo[0].Activity  %>" type="text" class="form-control" id="firstName" placeholder="مثال:شرکت بسته بندی چی توز" name="Activity" required/>
+                        <input  type="text" class="form-control" id="Activity" placeholder="مثال:شرکت بسته بندی چی توز" name="Activity" />
 
                     </div>
                 </div>
@@ -70,20 +70,20 @@
                     <div class="form-group col-md-4">
                         <label for="inputEmail4">شماره ثبت</label>
                         <span class="color-required">*</span>
-                        <input  type="number" value="<%=BusinesInfo[0].SabtNo  %>" name="SabtNo"  class="form-control" id="inputEmail4" placeholder="مثال:20178" required>
+                        <input  type="number"  name="SabtNo"  class="form-control" id="SabtNo" placeholder="مثال:20178" >
                     </div>
                     <!-- Mellino -->
                     <div class="form-group col-md-4">
                         <label for="inputPassword4">شماره ملی</label>
                         <span class="color-required">*</span>
-                        <input type="number" value="<%=BusinesInfo[0].MelliNo  %>" name="MelliNo" class="form-control" id="inputEmail4" placeholder="مثال:32156" required>
+                        <input type="number"  name="MelliNo" class="form-control" id="MelliNo" placeholder="مثال:32156" >
 
                     </div>
                     <!-- TypeWork -->
                     <div class="form-group col-md-4">
                         <label for="inputEmail4">نوع کسب و کار</label>
                         <span class="color-required">*</span>
-                        <select class="form-control" >
+                        <select class="form-control" name="TypeWork" >
                             <option value="0">انتخاب کنید</option>
                             <option value="1"> کسب و کار خدماتی</option>
                             <option value="2">کسب و کار بازرگانی</option>
@@ -105,7 +105,7 @@
                     <div class="form-group col-md-4">
                         <label for="inputEmail4">نام مدیر عامل</label>
                         <span class="color-required">*</span>
-                        <input value="<%=BusinesInfo[0].CEO  %>" type="text" name="CEO" class="form-control" id="inputEmail4" placeholder="مثال:افشین رحمتی" required>
+                        <input  type="text" name="CEO" class="form-control" id="CEO" placeholder="مثال:افشین رحمتی" >
                     </div>
                     <!-- DAte -->
                     <div class="form-group col-md-8 ">
@@ -142,7 +142,7 @@
                     <div class="form-group col-md-12">
                         <label for="inputEmail4">توضیحات راجبع کسب و کار خود</label>
                         <span class="color-required">*</span>
-                        <textarea class="form-control" name='description' id="exampleFormControlTextarea1" rows="5" placeholder="توضیحات راجبع کسب و کار خود" required></textarea>
+                        <textarea class="form-control" name='description' id="exampleFormControlTextarea1" rows="5" placeholder="توضیحات راجبع کسب و کار خود" ></textarea>
                     </div>
 
 
@@ -156,14 +156,14 @@
                             <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">آپلود لوگو </button>
                             <div class="image-upload-wrap">
 
-                                <input class="file-upload-input" class="form-control mb-4" name="img" type='file' onchange="readURL(this);" required />
+                                <input class="file-upload-input" class="form-control mb-4" name="img" type='file' onchange="readURL(this);"  />
                                 <div class="drag-text">
                                     <h3>آپلود لوگوی کسب و کار</h3>
                                     
                                 </div>
                             </div>
                             <div class="file-upload-content">
-                                <img class="file-upload-image" src="<%=BusinesInfo[0].Logo  %> " alt="your image" />
+                                <img class="file-upload-image" src="" alt="your image" />
                                 <div class="image-title-wrap">
                                     <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
                                 </div>
@@ -175,16 +175,12 @@
 <!-- Send -->
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <button type="submit" class="btn btn-primary">ارسال</button>
+                        <input class="btn btn-primary" style="width: 100%;" type="submit" value="ارسال" id="btnsend">    
                     </div>
-
-
-
                 </div>
+            </form>
         </div>
-        </form>
-
-        </div>
+      
     </main>
     
  <script src="/config/jquery.min.js"></script>
@@ -194,6 +190,29 @@
     crossorigin="anonymous"></script>
     <script src="/config/jquery.md.bootstrap.datetimepicker.js"></script>
 <!-- } -->
-
-
+<% if(BusinesInfo.length > 0){ %> 
+<script>
+    $("#formId").attr("action", "/dashboard/karfarma/UpdateBusinessInfopost");
+    $("#btnsend").css("background", "pink");
+    $("input").prop('disabled', false);
+    $("#btnsend").val("ویرایش");
+    $('#inputEmail4').val("<%=BusinesInfo[0].Title  %>");
+    $('#Domain').val("<%=BusinesInfo[0].Domain  %>");
+    $('#Brand').val("<%=BusinesInfo[0].Brand  %>");
+    $('#Activity').val("<%=BusinesInfo[0].Activity  %>");
+    $('#SabtNo').val("<%=BusinesInfo[0].SabtNo  %>");
+    $('#MelliNo').val("<%=BusinesInfo[0].MelliNo  %>");
+    $('#CEO').val("<%=BusinesInfo[0].CEO  %>");
+    $('#birthDate-text').val("<%=BusinesInfo[0].StartDate  %>");
+    $('#exampleFormControlTextarea1').val("<%=BusinesInfo[0].Description  %>");
+    $('#birthDate-text').val("<%=BusinesInfo[0].StartDate  %>");
+</script>
+<% }else{ %>
+    <script>
+    $("#formId").attr("action", "/dashboard/karfarma/BusinessInfopost");
+    $("#btnsend").css("background", "blues");
+    $("#btnsend").val("ارسال");
+    
+</script>
+<% } %>  
 <script src="/src/js/Karfarma/BusinessInfo.js"></script>   

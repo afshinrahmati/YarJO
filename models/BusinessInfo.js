@@ -50,6 +50,11 @@ const BusinessInfos = new Schema({
         required:true
     }
     ,
+    Type:{
+        type:String,
+        required:true
+    }
+    ,
     CEO:{
         type:String,
         required:true

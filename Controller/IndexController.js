@@ -9,7 +9,7 @@ module.exports = new class IndexRouter extends Controllr {
 
     async Home(req, res, next) {
         try {
-            return res.render('home/Home.ejs')
+            return res.render('home/main.ejs')
         } catch (error) {
 
         }
