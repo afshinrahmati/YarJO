@@ -1,9 +1,9 @@
 <%- include("./karfarma.ejs")  -%>
     <link rel="stylesheet" href="/config/jquery.md.bootstrap.datetimepicker.style.css">
     <link rel="stylesheet" href="/src/css/karfamapanel/Business.css">
+    <link rel="stylesheet" href="/config/leaflet.css">
 
 
- 
     <main>
 
         <div class="container form">
@@ -11,26 +11,188 @@
             <form action="" id="formId" method="post" enctype="multipart/form-data">
 
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail4">لطفا شهر خود را انتخاب نمایید</label>
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4">لطفا دسته بندی شغل خود را انتخاب نمیاد</label>
                         <span class="color-required">*</span>
-                        <input type="text"  name="Title" class="form-control" id="inputEmail4" placeholder="مثال:بسته بندی مزمز" >
+                        <select class="form-control" id="Select" name="parentID">
+                    <option value="0">انتخاب کنید</option>
+                    <% for(let i=0;i<City.length;i++){ %>
+                    
+                    <option value="<%= City[i].id %>"><%= City[i].name %> </option>
+                  
+                    <% } %> 
+                    </select>
                     </div>
-<!-- Domain -->
-                    <div class="form-group col-md-6">
-                        <label for="inputPassword4">انتخاب دامنه در سایت یارجو</label>
-                        <span class="color-required">*</span>
-                        <input type="text"  class="form-control" id="Domain" placeholder="استان شهر"  />
-
+                    <div class="form-group col-md-4">
+                        <div id="CategouryFind">
+                        </div>
                     </div>
                 </div>
 
-    
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">لطفا دسته بندی شغل خود را انتخاب نمیاد</label>
+                        <span class="color-required">*</span>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    </div>
+                    <div class="form-group col-md-6">
+
+                        <div class="form-group row col-12">
+                            <div class="col-12 col-md-6">
+                                <label for="longt" class="control-label">long</label>
+                                <input type="text" class="form-control" name="longt" id="longt" placeholder="long">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="lat" class="control-label">lat</label>
+                                <input type="text" class="form-control" name="lat" id="lat" placeholder="lat">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </form>
         </div>
-      
-    </main>
-    
-<script>
 
-</script>
+    </main>
+
+    <script src="/config/jquery.min.js"></script>
+    <script src="/config/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([33.505, 54.59], 6);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+
+
+
+        marker.on('move', function(e) {
+            document.getElementById('latitude').value = marker.getLatLng().lat;
+            document.getElementById('longitude').value = marker.getLatLng().lng;
+        });
+
+        var map = L.map('map');
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+
+        // placeholders for the L.marker and L.circle representing user's current position and accuracy
+        var current_position, current_accuracy;
+
+        function onLocationFound(e) {
+            // if position defined, then remove the existing position marker and accuracy circle from the map
+            if (current_position) {
+                map.removeLayer(current_position);
+                map.removeLayer(current_accuracy);
+            }
+
+            // var radius = e.accuracy / 2;
+
+            current_position = L.marker(e.latlng, {
+                pane: 'markerPane',
+                draggable: true,
+                autoPan: true,
+                autoPanSpeed: 80
+            }).addTo(map);
+
+            current_position.on('move', function(e) {
+                document.getElementById('lat').value = current_position.getLatLng().lat;
+                document.getElementById('longt').value = current_position.getLatLng().lng;
+            });
+            // current_accuracy = L.circle(e.latlng, radius).addTo(map);
+        }
+
+        // function onLocationError(e) {
+        //     alert(e.message);
+        // }
+
+        if (current_position || current_accuracy) {
+            map.on('locationfound', onLocationFound);
+            // map.on('locationerror', onLocationError);
+            map.locate({
+                setView: true,
+                maxZoom: 12
+            });
+        } else {
+            var marker = L.marker([35.70497200, 51.39824960], {
+                pane: 'markerPane',
+                draggable: true,
+                autoPan: true,
+                autoPanSpeed: 80
+            }).addTo(map);
+            // map.locate({setView: true, maxZoom: 6});
+            // alert('llll')
+            map.setView([35.70497200, 51.39824960], 9);
+
+            marker.on('move', function(e) {
+                document.getElementById('lat').value = marker.getLatLng().lat;
+                document.getElementById('longt').value = marker.getLatLng().lng;
+            });
+        }
+
+
+        // var marker = L.marker([35.70497200, 51.39824960], {
+        //     pane: 'markerPane',
+        //     draggable: true,
+        //     autoPan: true,
+        //     autoPanSpeed: 80
+        // }).addTo(map);
+
+
+        // wrap map.locate in a function
+        // function locate() {
+        //     map.locate({setView: true, maxZoom: 16});
+        // }
+
+        // call locate every 3 seconds... forever
+        // setInterval(locate, 3000);
+
+        // %%%%%%%%%%%%%%%%%5
+        $(document).on('change', '#Select', function() {
+
+            let code = $('#Select option:selected').val();
+            $("#Select2").remove();
+
+            $("#Select3").remove();
+            $("#lable3").remove();
+            if (code > 0) {
+                $.ajax({
+                    url: '/dashboard/karfarma/Locations/' + code,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+
+                        $.each(data, function(key, value) {
+                            let parennts = document.getElementById("CategouryFind");
+                            let lable = document.createElement("LABEL");
+                            lable.setAttribute("id", "lable3");
+                            let t = document.createTextNode("لطفا انتخاب نماید");
+                            lable.appendChild(t);
+                            parennts.appendChild(lable);
+                            let sel = document.createElement("select");
+                            sel.setAttribute("id", "Select3");
+                            sel.setAttribute("class", "form-control");
+                            sel.setAttribute("name", "parentID");
+                            parennts.appendChild(sel);
+                            let opt1 = document.createElement("option");
+                            opt1.value = "0";
+                            opt1.text = "انتخاب کنید";
+                            sel.add(opt1, null);
+                            for (let i = 0; i < value.length; i++) {
+                                let opt2 = document.createElement("option");
+                                opt2.value = value[i].id;
+                                opt2.text = value[i].name;
+                                sel.add(opt2, null);
+                            };
+                        });
+                    }
+                })
+            } else {
+
+            };
+        });
+    </script>
