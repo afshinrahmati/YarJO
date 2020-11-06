@@ -9,69 +9,75 @@
 }
 
 h5.chooseFind {
-  text-align: initial;
-  margin-top: 6px;
-}  
+    text-align: initial;
+    margin-top: 6px;
+}
 
 .form-group {
-  text-align: justify;
-  font-size: 12px;
-  margin-top: 12px;
-  color: hsl(300deg 8% 49%);
+    text-align: justify;
+    font-size: 12px;
+    margin-top: 12px;
+    color: hsl(300deg 8% 49%);
 }
 
 .menu {
-  background-color: hsl(202deg 19% 28%);
-  width: 17%;
-  height: 75rem;
-  position: absolute;
-  box-shadow: 2px 2px 10px #9e4141;
+    background-color: hsl(202deg 19% 28%);
+    width: 17%;
+    height: 75rem;
+    position: absolute;
+    box-shadow: 2px 2px 10px #9e4141;
 }
+
 span.input-group-text.cursor-pointer.birthDate-text-label {
-margin-left: -32px;
-margin-top: -6px;
-border: navajowhite;
-border-radius: 2px;
-  }
-input#birthDate-text {
-margin-left: 7px;
-margin-top: -6px;
+    margin-left: -32px;
+    margin-top: -6px;
+    border: navajowhite;
+    border-radius: 2px;
 }
+
+input#birthDate-text {
+    margin-left: 7px;
+    margin-top: -6px;
+}
+
 button.btn.btn-primary {
-  width: 100%;
+    width: 100%;
 }
 
 .image-dropping,
 .image-upload-wrap:hover {
-  background-color: hsl(158deg 100% 50%);
-  border: 1px solid;
+    background-color: hsl(158deg 100% 50%);
+    border: 1px solid;
 }
 
 .popover-body.p-0 {
-  font-family: 'IRANSans';
-  background: #00f3b0;
-}
-span.color-required {
-  color: red;
-  font-size: 12px;
-}
-h3.popover-header.text-center {
-  font-family: 'IRANSans';
-}
-.dropdown-menu.show {
-  background: antiquewhite;
-  padding: 4px;
-  box-shadow: 2px 2px 10px #07a3ff;
+    font-family: 'IRANSans';
+    background: #00f3b0;
 }
 
-  .file-upload {
+span.color-required {
+    color: red;
+    font-size: 12px;
+}
+
+h3.popover-header.text-center {
+    font-family: 'IRANSans';
+}
+
+.dropdown-menu.show {
+    background: antiquewhite;
+    padding: 4px;
+    box-shadow: 2px 2px 10px #07a3ff;
+}
+
+.file-upload {
     background-color: #ffffff;
     width: 40%;
     margin: 0 auto;
     padding: 20px;
-  }
-  
-  .file-upload-btn {
+}
+
+.file-upload-btn {
     width: 100%;
     margin: 0;
     color: #fff;
@@ -84,26 +90,26 @@ h3.popover-header.text-center {
     outline: none;
     text-transform: uppercase;
     font-weight: 700;
-  }
-  
-  .file-upload-btn:hover {
+}
+
+.file-upload-btn:hover {
     background: #1AA059;
     color: #ffffff;
     transition: all .2s ease;
     cursor: pointer;
-  }
-  
-  .file-upload-btn:active {
+}
+
+.file-upload-btn:active {
     border: 0;
     transition: all .2s ease;
-  }
-  
-  .file-upload-content {
+}
+
+.file-upload-content {
     display: none;
     text-align: center;
-  }
-  
-  .file-upload-input {
+}
+
+.file-upload-input {
     position: absolute;
     margin: 0;
     padding: 0;
@@ -112,44 +118,44 @@ h3.popover-header.text-center {
     outline: none;
     opacity: 0;
     cursor: pointer;
-  }
-  
-  .image-upload-wrap {
+}
+
+.image-upload-wrap {
     margin-top: 20px;
     border: 4px dashed #1FB264;
     position: relative;
-  }
-  
-  .image-dropping,
-  .image-upload-wrap:hover {
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
     background-color: #1FB264;
     border: 4px dashed #ffffff;
-  }
-  
-  .image-title-wrap {
+}
+
+.image-title-wrap {
     padding: 0 15px 15px 15px;
     color: #222;
-  }
-  
-  .drag-text {
+}
+
+.drag-text {
     text-align: center;
-  }
-  
-  .drag-text h3 {
+}
+
+.drag-text h3 {
     font-weight: 100;
     text-transform: uppercase;
     color: #15824B;
     padding: 60px 0;
-  }
-  
-  .file-upload-image {
+}
+
+.file-upload-image {
     max-height: 200px;
     max-width: 200px;
     margin: auto;
     padding: 20px;
-  }
-  
-  .remove-image {
+}
+
+.remove-image {
     width: 200px;
     margin: 0;
     color: #fff;
@@ -162,16 +168,16 @@ h3.popover-header.text-center {
     outline: none;
     text-transform: uppercase;
     font-weight: 700;
-  }
-  
-  .remove-image:hover {
+}
+
+.remove-image:hover {
     background: #c13b2a;
     color: #ffffff;
     transition: all .2s ease;
     cursor: pointer;
-  }
-  
-  .remove-image:active {
+}
+
+.remove-image:active {
     border: 0;
     transition: all .2s ease;
-  }
+}

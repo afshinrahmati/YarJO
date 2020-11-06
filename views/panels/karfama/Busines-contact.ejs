@@ -1,6 +1,7 @@
 <%- include("./karfarma.ejs")  -%>
     <link rel="stylesheet" href="/config/jquery.md.bootstrap.datetimepicker.style.css">
-    <link rel="stylesheet" href="/src/css/karfamapanel/Business.css">
+
+    <link rel="stylesheet" href="/src/css/karfamapanel/BUsinesContact.css">
     <link rel="stylesheet" href="/config/leaflet.css">
 
 
@@ -8,8 +9,11 @@
 
         <div class="container form">
 
-            <form action="" id="formId" method="post" enctype="multipart/form-data">
-
+            <form action="" id="formId" method="post">
+                <p>
+                    <%=ChooseCity  %>
+                </p>
+                <!--    chose city -->
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="inputEmail4">لطفا دسته بندی شغل خود را انتخاب نمیاد</label>
@@ -28,29 +32,92 @@
                         </div>
                     </div>
                 </div>
-
+                <!--    map,codeposty,tel,mobile,fox -->
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputEmail4">لطفا دسته بندی شغل خود را انتخاب نمیاد</label>
+                        <!-- Adress -->
+                        <label for="inputEmail4">لطفا آدرس  دقیقا خود را وارد نمایید</label>
                         <span class="color-required">*</span>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        <textarea placeholder="مثال : ایران-تهران-ورامین-محله بهشتی-کوچه۳۴-واحد۳-پلاک ۸۷" class="form-control" name="Adress" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        <!-- POsTCODE -->
+                        <label for="inputEmail4" class="mt-3">لطفا کد پستی دقیقا خود را وارد نمایید</label>
+                        <span class="color-required">*</span>
+                        <input type="number" id="PostalCode" name="PostalCode" class="form-control " placeholder="مثال:1779884594 ">
+                        <!-- TELEPHONE -->
+                        <label for="inputEmail4" class="mt-3">لطفا تلفن ثابت با کد شهر خود را  دقیقا خود را وارد نمایید</label>
+                        <span class="color-required">*</span>
+                        <input type="text" id="TelNo" name="TelNo" class="form-control " placeholder="مثال:33806606-021 ">
+                        <!-- MOBILE -->
+                        <label for="inputEmail4" class="mt-3">لطفا تلفن همراه  خود را  دقیقا خود را وارد نمایید</label>
+                        <span class="color-required">*</span>
+                        <input type="text" id="MobileNo" name="MobileNo" class="form-control " placeholder="مثال:09108348429  ">
+                        <!-- FaXNO -->
+                        <label for="inputEmail4" class="mt-3">لطفا تلفن فاکس  خود را  دقیقا خود را وارد نمایید</label>
+                        <span class="color-required">*</span>
+                        <input type="text" id="FaxNo" name="FaxNo" class="form-control " placeholder="مثال:805568562 ">
                     </div>
+                    <!-- MAP -->
                     <div class="form-group col-md-6">
-
+                        <label for="inputEmail4">لطفا آدرس خود را انتخاب نمایید</label>
+                        <span class="color-required">*</span>
                         <div class="form-group row col-12">
-                            <div class="col-12 col-md-6">
-                                <label for="longt" class="control-label">long</label>
-                                <input type="text" class="form-control" name="longt" id="longt" placeholder="long">
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label for="lat" class="control-label">lat</label>
-                                <input type="text" class="form-control" name="lat" id="lat" placeholder="lat">
+                            <div class="col-12 col-12">
+                                <div id="map"></div>
+                                <input type="hidden" class="form-control" name="Lat" id="lat" placeholder="lat">
+                                <input type="hidden" class="form-control" name="Long" id="longt" placeholder="long">
                             </div>
 
                         </div>
+
+
+                    </div>
+
+                </div>
+                <!--    email&web  -->
+                <div class="form-row">
+                    <!-- Email -->
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">لطفا ایمیل خود را وارد نمایید</label>
+                        <span class="color-required">*</span>
+                        <input type="email" id="Email" name="Email" class="form-control " placeholder="مثال:a@yahoo.com ">
+                    </div>
+                    <!-- WEBSITE -->
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">لطفا وب سایت خود را وارد نمایید</label>
+                        <span class="color-required">*</span>
+                        <input type="text" class="form-control" id="Website" placeholder="مثال :yargain.com(متن انگلیسی)" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57)"
+                            name="Website" />
                     </div>
                 </div>
+                <!--    insta&whatsapp&telegram  -->
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <img src="/src/img/icons8-instagram-100.png" alt="instagram" srcset="">
+                        <input type="checkbox" id="instagramm" onclick="instagram()">
+                        <div id="insta">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <img src="/src/img/icons8-telegram-app-50.png" alt="telegram" srcset="">
+                        <input type="checkbox" id="telegramm" onclick="telegram()">
+                        <div id="tele">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <img src="/src/img/icons8-whatsapp-50.png" alt="whatsapp" srcset="">
+                        <input type="checkbox" id="whatssapp" onclick="whatsapp()">
+                        <div id="whate">
+                        </div>
+                    </div>
 
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <input type="submit" id="btn" class="form-control" value="ارسال">
+                    </div>
+
+                </div>
             </form>
         </div>
 
@@ -58,141 +125,219 @@
 
     <script src="/config/jquery.min.js"></script>
     <script src="/config/leaflet.js"></script>
-    <script>
-        var map = L.map('map').setView([33.505, 54.59], 6);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    <% if(Contact.length > 0){ %>
+        <script>
+            $("#formId").attr("action", "/dashboard/karfarma/UpdateBusinessContactPOST");
+            $("#btn").css("background", "#394cc7");
 
+            $("#btn").val("ویرایش");
+            $('#exampleFormControlTextarea1').val("<%=Contact[0].Location.Adress  %>");
+            $('#PostalCode').val("<%=Contact[0].PostalCode  %>");
+            $('#TelNo').val("<%=Contact[0].TelNo  %>");
+            $('#MobileNo').val("<%=Contact[0].MobileNo  %>");
+            $('#FaxNo').val("<%=Contact[0].FaxNo  %>");
+            $('#Email').val("<%=Contact[0].Email  %>");
+            $('#Website').val("<%=Contact[0].Website  %>");
+            $('#lat').val("<%=Contact[0].Location.Lat  %>");
+            $('#longt').val("<%=Contact[0].Location.Long  %>");
 
-
-
-        marker.on('move', function(e) {
-            document.getElementById('latitude').value = marker.getLatLng().lat;
-            document.getElementById('longitude').value = marker.getLatLng().lng;
-        });
-
-        var map = L.map('map');
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-
-        // placeholders for the L.marker and L.circle representing user's current position and accuracy
-        var current_position, current_accuracy;
-
-        function onLocationFound(e) {
-            // if position defined, then remove the existing position marker and accuracy circle from the map
-            if (current_position) {
-                map.removeLayer(current_position);
-                map.removeLayer(current_accuracy);
+            if ('<%=Contact[0].SocialMedia.SocialInstagram  %>') {
+                const checkBox = document.getElementById("instagramm").remove();
+                let parents = document.getElementById('insta')
+                let INPUTE = document.createElement('INPUT');
+                parents.appendChild(INPUTE);
+                INPUTE.setAttribute("type", "text");
+                INPUTE.setAttribute("class", "form-control");
+                INPUTE.setAttribute("id", "instaagram");
+                $("#instaagram").val('<%=Contact[0].SocialMedia.SocialInstagram  %>')
+                INPUTE.setAttribute("name", "SocialInstagram");
+                INPUTE.setAttribute("placeholder", "مثال : https://www.instagram.com/afshin.rahmati1");
             }
 
-            // var radius = e.accuracy / 2;
+            if ('<%=Contact[0].SocialMedia.SocialTelegram  %>') {
+                const checkBox = document.getElementById("telegramm").remove();
 
-            current_position = L.marker(e.latlng, {
-                pane: 'markerPane',
-                draggable: true,
-                autoPan: true,
-                autoPanSpeed: 80
-            }).addTo(map);
+                let parents = document.getElementById('tele')
+                let INPUTE = document.createElement('INPUT');
+                parents.appendChild(INPUTE);
+                INPUTE.setAttribute("type", "text");
+                INPUTE.setAttribute("class", "form-control");
+                INPUTE.setAttribute("id", "teleegram");
+                $("#teleegram").val('<%=Contact[0].SocialMedia.SocialTelegram  %>')
+                INPUTE.setAttribute("name", "SocialTelegram");
+                INPUTE.setAttribute("placeholder", "مثال : https://t.me/nobitexmarket");
 
-            current_position.on('move', function(e) {
-                document.getElementById('lat').value = current_position.getLatLng().lat;
-                document.getElementById('longt').value = current_position.getLatLng().lng;
-            });
-            // current_accuracy = L.circle(e.latlng, radius).addTo(map);
-        }
+            }
 
-        // function onLocationError(e) {
-        //     alert(e.message);
-        // }
+            if ('<%=Contact[0].SocialMedia.SocialWhatsapp  %>') {
+                const checkBox = document.getElementById("whatssapp").remove();
+                let parents = document.getElementById('whate')
+                let INPUTE = document.createElement('INPUT');
+                parents.appendChild(INPUTE);
+                INPUTE.setAttribute("type", "text");
+                INPUTE.setAttribute("class", "form-control");
+                INPUTE.setAttribute("id", "whatsaaapp");
+                $("#whatsaaapp").val('<%=Contact[0].SocialMedia.SocialWhatsapp  %>')
 
-        if (current_position || current_accuracy) {
-            map.on('locationfound', onLocationFound);
-            // map.on('locationerror', onLocationError);
-            map.locate({
-                setView: true,
-                maxZoom: 12
-            });
-        } else {
-            var marker = L.marker([35.70497200, 51.39824960], {
-                pane: 'markerPane',
-                draggable: true,
-                autoPan: true,
-                autoPanSpeed: 80
-            }).addTo(map);
-            // map.locate({setView: true, maxZoom: 6});
-            // alert('llll')
-            map.setView([35.70497200, 51.39824960], 9);
+                INPUTE.setAttribute("name", "SocialWhatsapp");
+                INPUTE.setAttribute("placeholder", "  شماره واتساپ خود را وارد نمایید");
+            }
+        </script>
+        <% }else{ %>
+            <script>
+                $("#formId").attr("action", "/dashboard/karfarma/BusinessContactPOST");
+                $("#btn").css("background", "#f27b2d");
+                $("#btn").val("ارسال");
+            </script>
+            <% } %>
+                <script>
+                    // %%%%%%%%%%%%%%%%% /social-media
+                    //instagramer
+                    function instagram() {
+                        const checkBox = document.getElementById("instagramm");
+                        if (checkBox.checked == true) {
+                            let parents = document.getElementById('insta')
+                            let INPUTE = document.createElement('INPUT');
+                            parents.appendChild(INPUTE);
+                            INPUTE.setAttribute("type", "text");
+                            INPUTE.setAttribute("class", "form-control");
+                            INPUTE.setAttribute("id", "instaagram");
+                            INPUTE.setAttribute("name", "SocialInstagram");
+                            INPUTE.setAttribute("placeholder", "مثال : https://www.instagram.com/afshin.rahmati1");
+                        } else {
+                            $("#instaagram").remove();
+                        }
+                    };
+                    //telegram
+                    function telegram() {
+                        const checkBox = document.getElementById("telegramm");
+                        if (checkBox.checked == true) {
+                            let parents = document.getElementById('tele')
+                            let INPUTE = document.createElement('INPUT');
+                            parents.appendChild(INPUTE);
+                            INPUTE.setAttribute("type", "text");
+                            INPUTE.setAttribute("class", "form-control");
+                            INPUTE.setAttribute("id", "teleegram");
+                            INPUTE.setAttribute("name", "SocialTelegram");
+                            INPUTE.setAttribute("placeholder", "مثال : https://t.me/nobitexmarket");
+                        } else {
+                            $("#teleegram").remove();
+                        }
+                    };
+                    //WhatAPp
+                    function whatsapp() {
+                        const checkBox = document.getElementById("whatssapp");
+                        if (checkBox.checked == true) {
+                            let parents = document.getElementById('whate')
+                            let INPUTE = document.createElement('INPUT');
+                            parents.appendChild(INPUTE);
+                            INPUTE.setAttribute("type", "text");
+                            INPUTE.setAttribute("class", "form-control");
+                            INPUTE.setAttribute("id", "whatsaapp");
+                            INPUTE.setAttribute("name", "SocialWhatsapp");
+                            INPUTE.setAttribute("placeholder", "  شماره واتساپ خود را وارد نمایید");
+                        } else {
+                            $("#whatsaapp").remove();
+                        }
+                    };
 
-            marker.on('move', function(e) {
-                document.getElementById('lat').value = marker.getLatLng().lat;
-                document.getElementById('longt').value = marker.getLatLng().lng;
-            });
-        }
+                    // %%%%%%%%%%%%%%%%% /MAP
+                    let map = L.map('map');
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
 
 
-        // var marker = L.marker([35.70497200, 51.39824960], {
-        //     pane: 'markerPane',
-        //     draggable: true,
-        //     autoPan: true,
-        //     autoPanSpeed: 80
-        // }).addTo(map);
 
+                    let current_position, current_accuracy;
 
-        // wrap map.locate in a function
-        // function locate() {
-        //     map.locate({setView: true, maxZoom: 16});
-        // }
+                    function onLocationFound(e) {
+                        if (current_position) {
+                            map.removeLayer(current_position);
+                            map.removeLayer(current_accuracy);
+                        }
+                        current_position = L.marker(e.latlng, {
+                            pane: 'markerPane',
+                            draggable: true,
+                            autoPan: true,
+                            autoPanSpeed: 80
+                        }).addTo(map);
 
-        // call locate every 3 seconds... forever
-        // setInterval(locate, 3000);
-
-        // %%%%%%%%%%%%%%%%%5
-        $(document).on('change', '#Select', function() {
-
-            let code = $('#Select option:selected').val();
-            $("#Select2").remove();
-
-            $("#Select3").remove();
-            $("#lable3").remove();
-            if (code > 0) {
-                $.ajax({
-                    url: '/dashboard/karfarma/Locations/' + code,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-
-                        $.each(data, function(key, value) {
-                            let parennts = document.getElementById("CategouryFind");
-                            let lable = document.createElement("LABEL");
-                            lable.setAttribute("id", "lable3");
-                            let t = document.createTextNode("لطفا انتخاب نماید");
-                            lable.appendChild(t);
-                            parennts.appendChild(lable);
-                            let sel = document.createElement("select");
-                            sel.setAttribute("id", "Select3");
-                            sel.setAttribute("class", "form-control");
-                            sel.setAttribute("name", "parentID");
-                            parennts.appendChild(sel);
-                            let opt1 = document.createElement("option");
-                            opt1.value = "0";
-                            opt1.text = "انتخاب کنید";
-                            sel.add(opt1, null);
-                            for (let i = 0; i < value.length; i++) {
-                                let opt2 = document.createElement("option");
-                                opt2.value = value[i].id;
-                                opt2.text = value[i].name;
-                                sel.add(opt2, null);
-                            };
+                        current_position.on('move', function(e) {
+                            document.getElementById('lat').value = current_position.getLatLng().lat;
+                            document.getElementById('longt').value = current_position.getLatLng().lng;
                         });
-                    }
-                })
-            } else {
 
-            };
-        });
-    </script>
+                    }
+                    if (current_position || current_accuracy) {
+                        map.on('locationfound', onLocationFound);
+
+                        map.locate({
+                            setView: true,
+                            maxZoom: 12
+                        });
+                    } else {
+                        let marker = L.marker([35.70497200, 51.39824960], {
+                            pane: 'markerPane',
+                            draggable: true,
+                            autoPan: true,
+                            autoPanSpeed: 80
+                        }).addTo(map);
+
+                        map.setView([35.70497200, 51.39824960], 9);
+
+                        marker.on('move', function(e) {
+                            document.getElementById('lat').value = marker.getLatLng().lat;
+                            document.getElementById('longt').value = marker.getLatLng().lng;
+                        });
+                    };
+
+
+                    // %%%%%%%%%%%%%%%%% /ajax
+                    $(document).on('change', '#Select', function() {
+
+                        let code = $('#Select option:selected').val();
+                        $("#Select2").remove();
+
+                        $("#Select3").remove();
+                        $("#lable3").remove();
+                        if (code > 0) {
+                            $.ajax({
+                                url: '/dashboard/karfarma/Locations/' + code,
+                                type: "GET",
+                                dataType: "json",
+                                success: function(data) {
+
+                                    $.each(data, function(key, value) {
+                                        let parennts = document.getElementById("CategouryFind");
+                                        let lable = document.createElement("LABEL");
+                                        lable.setAttribute("id", "lable3");
+                                        let t = document.createTextNode("لطفا انتخاب نماید");
+                                        lable.appendChild(t);
+                                        parennts.appendChild(lable);
+                                        let sel = document.createElement("select");
+                                        sel.setAttribute("id", "Select3");
+                                        sel.setAttribute("class", "form-control");
+                                        sel.setAttribute("name", "parentID");
+                                        parennts.appendChild(sel);
+                                        let opt1 = document.createElement("option");
+                                        opt1.value = "0";
+                                        opt1.text = "انتخاب کنید";
+                                        sel.add(opt1, null);
+                                        for (let i = 0; i < value.length; i++) {
+                                            let opt2 = document.createElement("option");
+                                            opt2.value = value[i].id;
+                                            opt2.text = value[i].name;
+
+                                            sel.add(opt2, null);
+                                        };
+                                    });
+                                }
+                            })
+                        } else {
+
+                        };
+                    });
+                </script>

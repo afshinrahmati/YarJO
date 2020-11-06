@@ -7,7 +7,8 @@ const User = require('../models/User');
 const BusinesInfo = require('../models/BusinessInfo');
 const categoriess = require('../models/Category');
 const Locations = require('../models/Location');
-// 
+const BusinesContact = require('../models/BusinessContacts')
+    // 
 const { body, validationResult } = require('express-validator');
 
 module.exports = new class Karfarma extends Controllr {
@@ -244,8 +245,9 @@ module.exports = new class Karfarma extends Controllr {
     async BusinessContactGET(req, res, next) {
         try {
             const Location = await Locations.find({ parent_id: 0 });
+            const BusineContact = await BusinesContact.find({ UserId: req.session.user._id });
 
-            return res.render("panels/karfama/Busines-contact.ejs", { City: Location });
+            return res.render("panels/karfama/Busines-contact.ejs", { Contact: BusineContact, City: Location, ChooseCity: req.flash("ChodeCity") });
         } catch (error) {
 
         }
@@ -253,22 +255,82 @@ module.exports = new class Karfarma extends Controllr {
     //post
     async BusinessContactPOST(req, res, next) {
         try {
-            console.log("*POSTCONTANT*")
+
+            let ParentsIDCITY = req.body.parentID[req.body.parentID.length - 1];
+            const newContact = new BusinesContact({
+                UserId: req.session.user._id,
+                Location: {},
+                SocialMedia: {},
+                PostalCode: req.body.PostalCode,
+                TelNo: req.body.TelNo,
+                MobileNo: req.body.MobileNo,
+                FaxNo: req.body.FaxNo,
+                Email: req.body.Email,
+                Website: req.body.Website
+            });
+            if (ParentsIDCITY > 0) {
+                let City = await Locations.find({ id: ParentsIDCITY });
+                newContact.Location.City = City[0]._id;
+                newContact.Location.Adress = req.body.Adress;
+                newContact.Location.Lat = req.body.Lat
+                newContact.Location.Long = req.body.Long
+            } else {
+                req.flash("ChodeCity", "لطفا یک شهر را انتخاب نمایید");
+                return res.redirect("/dashboard/karfarma/BusinessContact")
+            }
+
+            if (req.body.SocialInstagram) {
+                newContact.SocialMedia.SocialInstagram = req.body.SocialInstagram;
+            } else {
+                newContact.SocialMedia.SocialInstagram = "ندارد";
+            }
+
+            if (req.body.SocialTelegram) {
+                newContact.SocialMedia.SocialTelegram = req.body.SocialTelegram;
+            } else {
+                newContact.SocialMedia.SocialTelegram = "ندارد";
+            }
+
+            if (req.body.SocialWhatsapp) {
+                newContact.SocialMedia.SocialWhatsapp = req.body.SocialWhatsapp;
+            } else {
+                newContact.SocialMedia.SocialWhatsapp = "ندارد";
+            }
+
+            await newContact.save();
+
+            return res.redirect('/dashboard/karfarma/BusinessContact')
+
+
         } catch (e) {
 
         }
     };
     // Location
     async LocationBusConGET(req, res, next) {
-        try {
-            const Location = await Locations.find({ parent_id: req.params.id });
-            return res.status(200).send({
-                "City": Location
-            })
+            try {
+                const Location = await Locations.find({ parent_id: req.params.id });
+                return res.status(200).send({
+                    "City": Location
+                })
 
+            } catch (e) {
+
+            }
+        }
+        // UPDATE
+    async UpdateBusinessContactPOST(req, res, next) {
+        try {
+            let arry = req.body.parentID.length;
+            if (arry > 1) {
+                console.log("smaler")
+            } else {
+                console.log("TALLER")
+            }
         } catch (e) {
 
         }
     }
+
 
 }

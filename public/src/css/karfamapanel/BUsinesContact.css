@@ -1,0 +1,34 @@
+.container.form {
+    background-color: #fff;
+    width: 75%;
+    margin-right: 19%;
+    margin-top: 41px;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 1px 1px 10px #366a88;
+}
+
+.form-group {
+    text-align: justify;
+    font-size: 12px;
+    margin-top: 12px;
+    color: hsl(300deg 8% 49%);
+}
+
+.menu {
+    background-color: hsl(202deg 19% 28%);
+    width: 17%;
+    height: 75rem;
+    position: absolute;
+    box-shadow: 2px 2px 10px #9e4141;
+}
+
+input#btn {
+    background: hsl(24deg 88% 56%);
+    color: hsl(56deg 78% 96%);
+}
+
+::placeholder {
+    font-size: 12px;
+    background: hsl(208deg 100% 97%);
+}

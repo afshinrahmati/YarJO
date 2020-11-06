@@ -16,8 +16,10 @@ router.get('/Category/:id', miderverKarfarma, karfarmaContoler.CategoryId);
 router.post('/UpdateBusinessInfopost', miderverKarfarma, Upload.single('img'), karfarmaContoler.UpdateBusinessInfopost)
     // *******CallWork*********
 router.get('/BusinessContact', miderverKarfarma, karfarmaContoler.BusinessContactGET);
-router.post('/BusinessContactPost', miderverKarfarma, karfarmaContoler.BusinessContactGET);
+router.post('/BusinessContactPost', miderverKarfarma, karfarmaContoler.BusinessContactPOST);
 router.get('/Locations/:id', miderverKarfarma, karfarmaContoler.LocationBusConGET);
+router.post('/UpdateBusinessContactPOST', miderverKarfarma, karfarmaContoler.UpdateBusinessContactPOST)
+
 
 
 module.exports = router;
