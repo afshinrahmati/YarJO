@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="49" viewBox="0 0 50 49">
+  <g id="Group_4" data-name="Group 4" transform="translate(-0.117 -0.348)">
+    <g id="Rectangle_9" data-name="Rectangle 9" transform="translate(0.117 0.348)" fill="#fff" stroke="#d7d7d7" stroke-width="4">
+      <rect width="50" height="49" rx="19" stroke="none"/>
+      <rect x="2" y="2" width="46" height="45" rx="17" fill="none"/>
+    </g>
+    <g id="Arrow_-_Up_Circle" data-name="Arrow - Up Circle" transform="translate(21.367 30.5) rotate(-90)">
+      <path id="Path_32" data-name="Path 32" d="M0,5.525a.974.974,0,0,1,.286-.69L4.811.287A.981.981,0,0,1,6.2.287l4.528,4.548A.978.978,0,1,1,9.34,6.215L5.505,2.363,1.671,6.215A.978.978,0,0,1,0,5.525Z" transform="translate(0 0)" fill="#200e32"/>
+    </g>
+  </g>
+</svg>

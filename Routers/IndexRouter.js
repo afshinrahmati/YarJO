@@ -7,6 +7,10 @@ const midelver_Auth = require('../middleware/Auth/Authmidl');
 // $$$$$$$$$$$$$ Home $$$$$$$$$$
 
 router.get('/', IndexController.Home);
+router.get('/bloges', IndexController.bloges);
+router.get('/AboutUs', IndexController.AboutUs);
+router.get('/IndexRoute', IndexController.IndexRoute);
+router.get('/search', IndexController.search);
 
 // $$$$$$$$$$$$$$ USER $$$$$$$$$$$$
 

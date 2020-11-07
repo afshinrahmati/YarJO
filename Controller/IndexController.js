@@ -9,11 +9,45 @@ module.exports = new class IndexRouter extends Controllr {
 
     async Home(req, res, next) {
         try {
-            return res.render('home/main.ejs')
+            return res.render('home/index.ejs')
         } catch (error) {
 
         }
     };
+    // *******bloges
+    async bloges(req,res,next){
+        try {
+           
+            return res.render('home/blogs.ejs')
+        } catch (error) {
+            
+        }
+    }
+ // *******AboutUs
+ async AboutUs(req,res,next){
+    try {
+       
+        return res.render('home/yarjoo_introduction.ejs')
+    } catch (error) {
+        
+    }
+}
+async search(req,res,next){
+    try {
+        return res.render("home/advanced_search.ejs")   
+    } catch (error) {
+        
+    }
+}
+// ***IndexRoute
+async IndexRoute(req,res,next){
+    try {
+        return res.render('home/introduction.ejs')
+    } catch (error) {
+        
+    }
+}
+
 
     // *******Logout**********
 

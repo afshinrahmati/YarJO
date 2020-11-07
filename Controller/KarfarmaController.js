@@ -322,11 +322,103 @@ module.exports = new class Karfarma extends Controllr {
     async UpdateBusinessContactPOST(req, res, next) {
         try {
             let arry = req.body.parentID.length;
-            if (arry > 1) {
-                console.log("smaler")
-            } else {
-                console.log("TALLER")
+            let BusineContactes = await BusinesContact.find({ UserId: req.session.user._id });
+            let data ={
+                UserId: req.session.user._id,
+                Location: {},
+                SocialMedia: {},
             }
+            
+// *****Location*********
+            // Chose
+            if (arry > 1) {                
+               let FindCity = req.body.parentID[req.body.parentID.length-1];
+               if(FindCity == 0){
+                 data.Location.City = BusineContactes[0].Location.City;
+               }else{
+                let City = await Locations.find({ id: FindCity });
+                data.Location.City = City[0]._id;
+               }
+            } else {
+                data.Location.City = BusineContactes[0].Location.City;
+            }
+
+// Adress
+        if(req.body.Adress.length>0){data.Location.Adress = req.body.Adress}
+        else{ data.Location.Adress =  BusineContactes[0].Location.Adress;};
+// LAT
+        if(req.body.Lat.length>0){data.Location.Lat = req.body.Lat}
+        else{ data.Location.Lat =  BusineContactes[0].Location.Lat;};
+// Long
+        if(req.body.Long.length>0){data.Location.Long = req.body.Long}
+        else{ data.Location.Long =  BusineContactes[0].Location.Long};
+
+// *****Social-Media*********
+
+//instagram
+if(req.body.SocialInstagram.length > 0){
+    data.SocialMedia.SocialInstagram = req.body.SocialInstagram
+}else{
+    data.SocialMedia.SocialInstagram = "ندارد";
+}
+//Telegram
+if(req.body.SocialTelegram.length > 0){
+    data.SocialMedia.SocialTelegram = req.body.SocialTelegram;
+}else{
+    data.SocialMedia.SocialTelegram = "ندارد";
+}
+//lWhatsapp
+if(req.body.SocialWhatsapp.length > 0){
+    data.SocialMedia.SocialWhatsapp = req.body.SocialWhatsapp;
+}else{
+    data.SocialMedia.SocialWhatsapp = "ندارد";
+}
+// PostalCode
+if(req.body.PostalCode.length>0){
+data.PostalCode = req.body.PostalCode;
+}else{
+    data.PostalCode = BusineContactes[0].PostalCode;
+};
+
+// TelNo
+if(req.body.TelNo.length>0){
+    data.TelNo = req.body.TelNo
+    }else{
+        data.TelNo = BusineContactes[0].TelNo;
+}
+// MobileNo
+if(req.body.MobileNo.length>0){
+    data.MobileNo = req.body.MobileNo
+    }else{
+        data.MobileNo = BusineContactes[0].MobileNo;
+}
+// FaxNo
+if(req.body.FaxNo.length>0){
+    data.FaxNo = req.body.FaxNo
+    }else{
+        data.FaxNo = BusineContactes[0].FaxNo;
+}
+// Email
+   
+if(req.body.Email.length>0){
+    data.Email = req.body.Email
+    }else{
+        data.Email = BusineContactes[0].Email;
+}
+// Website
+if(req.body.Website.length>0){
+    data.Website = req.body.Website
+    }else{
+        data.Website = BusineContactes[0].Website;
+}
+  
+
+await BusinesContact.updateOne({ UserId: req.session.user._id }, { $set: data });
+return res.redirect("/dashboard/karfarma/BusinessContact");
+            
+
+
+
         } catch (e) {
 
         }
